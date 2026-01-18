@@ -34,7 +34,7 @@ const newsData = [
         date: "2 sty 2026",
         tag: "PILNE",
         tagColor: "bg-red-800",
-        image: "/Wypadek Pociągu na LK38 w Sokółce.webp",
+        image: "https://ocdn.eu/images/pulscms/Y2U7MDA_/9673754f-4d0c-4f22-a270-ff0ef0d4155e.jpeg",
         summary: "Dziś w godzinach porannych na stacji Sokółka doszło do groźnego incydentu. Pociąg Kolei Podlaskich o numerze EN57AL-1536, wykonujący przejazd techniczny do miejscowego zaplecza (szopy), wypadł z szyn.",
         content: `
             <p>Dziś w godzinach porannych na stacji Sokółka doszło do groźnego incydentu. Pociąg Kolei Podlaskich o numerze EN57AL-1536, wykonujący przejazd techniczny do miejscowego zaplecza (szopy), wypadł z szyn.</p>
