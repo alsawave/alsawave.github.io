@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;&family=Montserrat:wght@800&display=swap');
+
+.font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background:
+        radial-gradient(circle at 0% 0%, rgba(187, 247, 208, 0.6), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(240, 253, 244, 0.8), transparent 55%),
+        #f9fafb;
+    color: #111827;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+    background: #22c55e;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #16a34a;
+}
+.hero-panel {
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    box-shadow:
+        0 24px 60px rgba(15, 23, 42, 0.35),
+        0 0 0 1px rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(16px);
+    transform: translateY(4px);
+    transition: transform 200ms ease-out, box-shadow 200ms ease-out, border-color 200ms ease-out;
+}
+.hero-panel:hover {
+    transform: translateY(0);
+    box-shadow:
+        0 28px 80px rgba(15, 23, 42, 0.45),
+        0 0 0 1px rgba(255, 255, 255, 0.6);
+    border-color: rgba(22, 163, 74, 0.4);
+}
+.news-card {
+    border-radius: 1.6rem;
+    overflow: hidden;
+    box-shadow: 0 8px 26px rgba(15, 23, 42, 0.06);
+    transition:
+        transform 180ms ease-out,
+        box-shadow 180ms ease-out,
+        border-color 180ms ease-out;
+}
+.news-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 38px rgba(15, 23, 42, 0.12);
+}
+.news-card img {
+    transition: transform 550ms ease-out;
+}
+.news-card:hover img {
+    transform: scale(1.04);
+}
+.news-card ::selection, #news-modal ::selection {
+    background-color: var(--selection-bg, #22c55e);
+    color: white;
+}
+
