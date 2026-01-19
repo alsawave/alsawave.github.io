@@ -409,16 +409,17 @@ function setStep(stepIndex) {
     
     stepLabels.forEach((label, idx) => {
         const circle = label.querySelector('span:first-child');
+        const baseClasses = "flex items-center gap-2 font-bold booking-step-label";
         if (idx < stepIndex) {
-            label.className = "flex items-center gap-2 text-green-700 font-bold";
+            label.className = `${baseClasses} text-green-700`;
             circle.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i>';
             circle.className = "w-6 h-6 rounded-full bg-green-600 border-2 border-green-600 flex items-center justify-center text-white";
         } else if (idx === stepIndex) {
-            label.className = "flex items-center gap-2 text-green-600 font-bold";
+            label.className = `${baseClasses} text-green-600`;
             circle.innerHTML = `${idx + 1}`;
             circle.className = "w-6 h-6 rounded-full border-2 border-green-600 flex items-center justify-center";
         } else {
-            label.className = "flex items-center gap-2 text-gray-400 font-bold";
+            label.className = `${baseClasses} text-gray-400`;
             circle.innerHTML = `${idx + 1}`;
             circle.className = "w-6 h-6 rounded-full border-2 border-gray-200 flex items-center justify-center";
         }
@@ -645,10 +646,10 @@ const BASE_TIMETABLE = {
         { id: "Os 10036", depTime: "22:00", type: "Nocny Sprinter", unit: "SA133-012" },
         { id: "Os 10038", depTime: "23:30", type: "Nocny Sprinter", unit: "SA133-001" }
     ],
+    // REMINDER: NEVER ADD "Nocny Sprinter" to the Czeremcha - Białystok line.
     "Białystok->Czeremcha": [
         { id: "Os 30031", depTime: "06:52", type: "Osobowy", unit: "SA108-009" },
-        { id: "Os 30033", depTime: "15:00", type: "Osobowy", unit: "SA105-103" },
-        { id: "Os 30035", depTime: "22:30", type: "Nocny Sprinter", unit: "SA133-019" }
+        { id: "Os 30033", depTime: "15:00", type: "Osobowy", unit: "SA105-103" }
     ],
     "Czeremcha->Białystok": [
         { id: "Os 30032", depTime: "04:54", type: "Osobowy", unit: "SA108-009" },
@@ -670,8 +671,7 @@ function minutesToTime(mins) {
 function generateTrains(fromName, toName, selectedTimeMinutes = 0) {
     const now = new Date();
     const currentRealMins = now.getHours() * 60 + now.getMinutes();
-    const travelDateStr = document.getElementById('travel-date').value;
-    const isToday = travelDateStr === now.toLocaleDateString('en-CA');
+    const isToday = document.getElementById('travel-date').value === now.toLocaleDateString('en-CA');
 
     const s1L38 = STATIONS_L38.find(s => s.name === fromName);
     const s1L6 = STATIONS_L6.find(s => s.name === fromName);
@@ -680,149 +680,92 @@ function generateTrains(fromName, toName, selectedTimeMinutes = 0) {
     const s2L6 = STATIONS_L6.find(s => s.name === toName);
     const s2P3 = STATIONS_P3.find(s => s.name === toName);
 
-    const bia38 = STATIONS_L38.find(s => s.name === "Białystok");
-    const bia6 = STATIONS_L6.find(s => s.name === "Białystok");
-    const biaP3 = STATIONS_P3.find(s => s.name === "Białystok");
-
-    let distanceKm = 0;
-    let mainDirection = "";
-    const getDurationStr = (mins) => {
-        return mins >= 60 ? `${Math.floor(mins/60)}h ${mins%60}min` : `${mins}min`;
-    };
-
-    if (s1L38 && s2L38) {
-        distanceKm = Math.abs(s1L38.km - s2L38.km);
-        mainDirection = s2L38.km > s1L38.km ? "Białystok->Grajewo" : "Grajewo->Białystok";
-    } else if (s1L6 && s2L6) {
-        distanceKm = Math.abs(s1L6.km - s2L6.km);
-        if (s1L6.name === "Białystok" || (s1L6.km > s2L6.km)) mainDirection = "Białystok->Czyżew";
-        else mainDirection = "Czyżew->Białystok";
-    } else if (s1P3 && s2P3) {
-        const avgSpeedP3 = 40; 
-        const distanceKmLocal = Math.abs(s1P3.km - s2P3.km);
-        const basePrice = distanceKmLocal * 0.34625;
-        const durationMin = Math.max(10, Math.round((distanceKmLocal / avgSpeedP3) * 60) + 10);
-
-        const timetableBase = BASE_TIMETABLE["Białystok->Czeremcha"] || [];
-        const czerP3 = STATIONS_P3.find(s => s.name === "Czeremcha");
-
-        if (!biaP3 || !czerP3 || timetableBase.length === 0) return [];
-
-        const totalLineDistance = Math.abs(czerP3.km - biaP3.km);
-        const totalRuntimeMin = Math.round((totalLineDistance / avgSpeedP3) * 60);
-        const directionForward = s2P3.km > s1P3.km;
-
-        return timetableBase.map(slot => {
-            const depBialMins = timeToMinutes(slot.depTime);
-            let depLocalMins;
-
-            if (directionForward) {
-                const offsetFromBial = Math.round(((s1P3.km - biaP3.km) / avgSpeedP3) * 60);
-                depLocalMins = depBialMins + offsetFromBial;
-            } else {
-                const arrCzerMins = depBialMins + totalRuntimeMin;
-                const depCzerMins = arrCzerMins + 60;
-                const offsetToCzer = Math.round(((czerP3.km - s1P3.km) / avgSpeedP3) * 60);
-                depLocalMins = depCzerMins - offsetToCzer;
-            }
-
-            return {
-                id: slot.id,
-                from: fromName,
-                to: toName,
-                distance: Math.max(1, Math.floor(distanceKmLocal)),
-                depTime: minutesToTime(depLocalMins),
-                duration: getDurationStr(durationMin),
-                price: parseFloat(basePrice.toFixed(2)),
-                type: slot.type,
-                requiresSwitch: false,
-                connection: null
-            };
-        }).filter(t => {
-            const depMins = timeToMinutes(t.depTime);
-            return depMins >= selectedTimeMinutes && (!isToday || depMins >= currentRealMins);
-        });
-    } else {
-        // Cross-line via Białystok (primary switch station)
-        const d1 = s1L38 ? Math.abs(s1L38.km - bia38.km) : (s1L6 ? Math.abs(s1L6.km - bia6.km) : Math.abs(s1P3.km - biaP3.km));
-        const d2 = s2L38 ? Math.abs(s2L38.km - bia38.km) : (s2L6 ? Math.abs(s2L6.km - bia6.km) : Math.abs(s2P3.km - biaP3.km));
-        distanceKm = d1 + d2;
-        if (s1L38) mainDirection = "Grajewo->Białystok";
-        else if (s1L6) mainDirection = "Czyżew->Białystok";
-        else mainDirection = "Czeremcha->Białystok";
-    }
-
-    const timetable = BASE_TIMETABLE[mainDirection] || BASE_TIMETABLE["Białystok->Grajewo"];
     const junctionStations = ["Białystok", "Białystok Zielone Wzgórza"];
     const isCrossLine = (s1L38 && (s2L6 || s2P3)) || (s1L6 && (s2L38 || s2P3)) || (s1P3 && (s2L38 || s2L6));
     const requiresSwitch = isCrossLine && !junctionStations.includes(fromName) && !junctionStations.includes(toName);
 
-    const switchStationName = "Białystok";
-    const sw38 = STATIONS_L38.find(s => s.name === switchStationName);
-    const sw6 = STATIONS_L6.find(s => s.name === switchStationName);
-    const swP3 = STATIONS_P3.find(s => s.name === switchStationName);
-    
-    // First leg distance/duration
-    const distToJunction = s1L38 ? Math.abs(s1L38.km - sw38.km) : (s1L6 ? Math.abs(s1L6.km - sw6.km) : Math.abs(s1P3.km - swP3.km));
-    const speedFirstLeg = s1P3 ? 40 : LINE_SPEED_KMPH;
-    const timeToJunction = Math.round((distToJunction / speedFirstLeg) * 60) + 5;
+    const getLineData = (s1, s2) => {
+        if (s1L38 && s2L38) return { key: s2.km > s1.km ? "Białystok->Grajewo" : "Grajewo->Białystok", speed: 50, originKm: s2.km > s1.km ? 0 : 82.477 };
+        if (s1L6 && s2L6) return { key: s2.km < s1.km ? "Białystok->Czyżew" : "Czyżew->Białystok", speed: 50, originKm: s2.km < s1.km ? 177.305 : 111.848 };
+        if (s1P3 && s2P3) return { key: s2.km > s1.km ? "Białystok->Czeremcha" : "Czeremcha->Białystok", speed: 40, originKm: s2.km > s1.km ? 0 : 77.003 };
+        return null;
+    };
 
-    let nextLegKey = "";
-    if (requiresSwitch) {
-        if (s2L38) nextLegKey = "Białystok->Grajewo";
-        else if (s2L6) nextLegKey = "Białystok->Czyżew";
-        else if (s2P3) nextLegKey = "Białystok->Czeremcha";
+    const getDurationStr = (mins) => mins >= 60 ? `${Math.floor(mins / 60)}h ${mins % 60}min` : `${mins}min`;
+
+    if (!requiresSwitch) {
+        const s1 = s1L38 || s1L6 || s1P3;
+        const s2 = s2L38 || s2L6 || s2P3;
+        const line = getLineData(s1, s2);
+        if (!line) return [];
+
+        const distanceKm = Math.abs(s1.km - s2.km);
+        const distFromOrigin = Math.abs(s1.km - line.originKm);
+        const timeFromOrigin = Math.round((distFromOrigin / line.speed) * 60);
+        const travelTime = Math.max(5, Math.round((distanceKm / line.speed) * 60));
+
+        const timetable = BASE_TIMETABLE[line.key] || [];
+        return timetable.map(slot => {
+            const depMins = timeToMinutes(slot.depTime) + timeFromOrigin;
+            const arrMins = depMins + travelTime;
+            return {
+                id: slot.id, from: fromName, to: toName, distance: Math.max(1, Math.floor(distanceKm)),
+                depTime: minutesToTime(depMins), arrTime: minutesToTime(arrMins), duration: getDurationStr(travelTime),
+                price: parseFloat((distanceKm * 0.34625).toFixed(2)), type: slot.type, requiresSwitch: false
+            };
+        }).filter(t => {
+            const m = timeToMinutes(t.depTime);
+            return m >= selectedTimeMinutes && (!isToday || m >= currentRealMins);
+        });
+    } else {
+        // Cross-line via Białystok
+        const s1 = s1L38 || s1L6 || s1P3;
+        const s2 = s2L38 || s2L6 || s2P3;
+        const biaName = "Białystok";
+        const bia38 = STATIONS_L38.find(s => s.name === biaName);
+        const bia6 = STATIONS_L6.find(s => s.name === biaName);
+        const biaP3 = STATIONS_P3.find(s => s.name === biaName);
+        const sBia = s1L38 ? bia38 : (s1L6 ? bia6 : biaP3);
+        const eBia = s2L38 ? bia38 : (s2L6 ? bia6 : biaP3);
+
+        const leg1 = getLineData(s1, sBia);
+        const leg2 = getLineData(eBia, s2);
+        if (!leg1 || !leg2) return [];
+
+        const d1 = Math.abs(s1.km - sBia.km);
+        const d2 = Math.abs(s2.km - eBia.km);
+        const t1 = Math.round((d1 / leg1.speed) * 60);
+        const t2 = Math.round((d2 / leg2.speed) * 60);
+        const timeFromOrigin1 = Math.round((Math.abs(s1.km - leg1.originKm) / leg1.speed) * 60);
+
+        const timetable1 = BASE_TIMETABLE[leg1.key] || [];
+        const timetable2 = BASE_TIMETABLE[leg2.key] || [];
+
+        return timetable1.map(slot => {
+            const dep1Mins = timeToMinutes(slot.depTime) + timeFromOrigin1;
+            const arrBiaMins = dep1Mins + t1;
+            const conn = timetable2.find(s => timeToMinutes(s.depTime) >= arrBiaMins + 12);
+            if (!conn) return null;
+
+            const dep2Mins = timeToMinutes(conn.depTime);
+            const arrFinalMins = dep2Mins + t2;
+            const totalDuration = arrFinalMins - dep1Mins;
+
+            return {
+                id: slot.id, from: fromName, to: toName, distance: Math.floor(d1 + d2),
+                depTime: minutesToTime(dep1Mins), arrTime: minutesToTime(arrFinalMins), duration: getDurationStr(totalDuration),
+                price: parseFloat(((d1 + d2) * 0.34625).toFixed(2)), type: slot.type, requiresSwitch: true,
+                connection: { station: "Białystok", arrivalTime: minutesToTime(arrBiaMins), departureTime: conn.depTime, nextTrainId: conn.id, nextTrainType: conn.type }
+            };
+        }).filter(t => {
+            if (!t) return false;
+            const m = timeToMinutes(t.depTime);
+            return m >= selectedTimeMinutes && (!isToday || m >= currentRealMins);
+        });
     }
-
-    return timetable.map(slot => {
-        const depMins = timeToMinutes(slot.depTime);
-        const arrivalAtJunctionMins = depMins + timeToJunction;
-        
-        let connection = null;
-        let totalDurationMin = Math.max(10, Math.round((distanceKm / LINE_SPEED_KMPH) * 60) + 10);
-
-        if (requiresSwitch && nextLegKey) {
-            const nextLegTimetable = BASE_TIMETABLE[nextLegKey];
-            const connectingSlot = nextLegTimetable.find(t => timeToMinutes(t.depTime) >= arrivalAtJunctionMins + 12);
-            
-            if (connectingSlot) {
-                const distFromJunction = s2L38 ? Math.abs(s2L38.km - sw38.km) : (s2L6 ? Math.abs(s2L6.km - sw6.km) : Math.abs(s2P3.km - swP3.km));
-                const speedSecondLeg = s2P3 ? 40 : LINE_SPEED_KMPH;
-                const timeFromJunction = Math.round((distFromJunction / speedSecondLeg) * 60) + 5;
-                const depConnectingMins = timeToMinutes(connectingSlot.depTime);
-                const finalArrivalMins = depConnectingMins + timeFromJunction;
-                
-                totalDurationMin = finalArrivalMins - depMins;
-
-                connection = {
-                    station: "Białystok",
-                    arrivalTime: minutesToTime(arrivalAtJunctionMins),
-                    departureTime: connectingSlot.depTime,
-                    nextTrainId: connectingSlot.id,
-                    nextTrainType: connectingSlot.type
-                };
-            }
-        }
-
-        return {
-            id: slot.id,
-            from: fromName,
-            to: toName,
-            distance: Math.max(1, Math.floor(distanceKm)),
-            depTime: slot.depTime,
-            duration: getDurationStr(totalDurationMin),
-            price: parseFloat((distanceKm * 0.34625).toFixed(2)),
-            type: slot.type,
-            requiresSwitch: requiresSwitch && !!connection,
-            connection: connection
-        };
-    }).filter(t => {
-        const depMins = timeToMinutes(t.depTime);
-        const timeConstraint = isToday ? Math.max(selectedTimeMinutes, currentRealMins) : selectedTimeMinutes;
-        const departed = isToday && depMins < currentRealMins;
-        return depMins >= timeConstraint && !departed && (!requiresSwitch || t.connection);
-    });
 }
+
+
 
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -881,12 +824,22 @@ searchForm.addEventListener('submit', (e) => {
         card.className = "bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col md:flex-row items-center justify-between gap-6 hover:shadow-md transition";
         card.innerHTML = `
             <div class="flex items-center gap-4 w-full md:w-auto">
-                <div class="bg-green-100 p-3 rounded-xl text-green-700">
+                <div class="bg-green-100 p-3 rounded-xl text-green-700 shrink-0">
                     <i data-lucide="train-front" class="w-6 h-6"></i>
                 </div>
-                <div>
-                    <div class="text-[10px] font-black text-white px-2 py-0.5 rounded ${badgeColor} uppercase tracking-wider">${train.type}</div>
-                    <div class="text-xl font-bold mt-1">${train.depTime}</div>
+                <div class="flex flex-col">
+                    <div class="text-[10px] w-fit font-black text-white px-2 py-0.5 rounded ${badgeColor} uppercase tracking-wider mb-1">${train.type}</div>
+                    <div class="flex items-center gap-3">
+                        <div class="text-center">
+                            <div class="text-[10px] text-gray-400 font-bold uppercase">Odjazd</div>
+                            <div class="text-xl font-black text-gray-900">${train.depTime}</div>
+                        </div>
+                        <i data-lucide="arrow-right" class="w-4 h-4 text-gray-300 mt-1"></i>
+                        <div class="text-center">
+                            <div class="text-[10px] text-gray-400 font-bold uppercase">Przyjazd</div>
+                            <div class="text-xl font-black text-gray-900">${train.arrTime}</div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="flex-1 text-center md:text-left">
@@ -949,6 +902,7 @@ function openBookingModal(train) {
     setStep(0);
     bookingRouteInfo.innerText = `${currentSearchData.from} ➔ ${currentSearchData.to}`;
     document.getElementById('booking-date-info').innerText = currentSearchData.date;
+    document.getElementById('booking-time-info').innerText = train.depTime;
     document.getElementById('booking-train-type').innerText = `${train.type} ${train.id}`;
     updateFinalPrice();
     bookingModal.classList.remove('hidden');
