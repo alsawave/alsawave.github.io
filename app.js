@@ -94,6 +94,7 @@ const newsData = [
 <p> - klimatyzację,</p>
 <p> - ładowarki sieciowe z portami USB (tylko w składach EN57AL),</p>
 <p> - internet bezprzewodowy WiFi.</p>
+<p></p>
         `
     },
     {
@@ -591,41 +592,41 @@ document.getElementById('close-after-success').addEventListener('click', () => {
     closeBookingModal();
 });
 
-const LINE_SPEED_KMPH = 70;
+const LINE_SPEED_KMPH = 50;
 
 const BASE_TIMETABLE = {
     "Białystok->Grajewo": [
         { id: "Os 20001", depTime: "01:00", type: "Nocny Sprinter", unit: "SA133-019" },
         { id: "Os 20003", depTime: "04:30", type: "Nocny Sprinter", unit: "SA133-001" },
-        { id: "Os 20005", depTime: "08:00", type: "Sprinter", unit: "EN57AL-1529" },
-        { id: "Os 20007", depTime: "11:30", type: "Sprinter", unit: "SA133-009" },
-        { id: "Os 20009", depTime: "15:00", type: "Sprinter", unit: "EN57AL-1555" },
-        { id: "Os 20011", depTime: "18:30", type: "Sprinter", unit: "SA133-002" },
-        { id: "Os 20013", depTime: "22:00", type: "Sprinter", unit: "EN57AL-1544" }
+        { id: "Os 20005", depTime: "08:00", type: "Osobowy", unit: "EN57AL-1529" },
+        { id: "Os 20007", depTime: "11:30", type: "Osobowy", unit: "SA133-009" },
+        { id: "Os 20009", depTime: "15:00", type: "Osobowy", unit: "EN57AL-1555" },
+        { id: "Os 20011", depTime: "18:30", type: "Osobowy", unit: "SA133-002" },
+        { id: "Os 20013", depTime: "22:00", type: "Osobowy", unit: "EN57AL-1544" }
     ],
     "Grajewo->Białystok": [
         { id: "Os 20002", depTime: "02:45", type: "Nocny Sprinter", unit: "SA133-012" },
-        { id: "Os 20004", depTime: "06:15", type: "Sprinter", unit: "EN57AL-1543" },
-        { id: "Os 20006", depTime: "09:45", type: "Sprinter", unit: "SA133-001" },
-        { id: "Os 20008", depTime: "13:15", type: "Sprinter", unit: "EN57AL-1551" },
-        { id: "Os 20010", depTime: "16:45", type: "Sprinter", unit: "SA105-103" },
-        { id: "Os 20012", depTime: "20:15", type: "Sprinter", unit: "SA133-020" },
-        { id: "Os 20014", depTime: "23:45", type: "Nocny Sprinter", unit: "SA108-007" }
+        { id: "Os 20004", depTime: "06:15", type: "Osobowy", unit: "EN57AL-1543" },
+        { id: "Os 20006", depTime: "09:45", type: "Osobowy", unit: "SA133-001" },
+        { id: "Os 20008", depTime: "13:15", type: "Osobowy", unit: "EN57AL-1551" },
+        { id: "Os 20010", depTime: "16:45", type: "Osobowy", unit: "SA105-103" },
+        { id: "Os 20012", depTime: "20:15", type: "Osobowy", unit: "SA133-020" },
+        { id: "Os 20014", depTime: "23:45", type: "Osobowy", unit: "SA108-007" }
     ],
     "Białystok->Czyżew": [
         { id: "Os 10011", depTime: "01:15", type: "Nocny Sprinter", unit: "SA133-001" },
         { id: "Os 10013", depTime: "04:45", type: "Nocny Sprinter", unit: "SA133-019" },
-        { id: "Os 10015", depTime: "06:15", type: "Sprinter", unit: "EN57AL-1529" },
-        { id: "Os 10017", depTime: "07:45", type: "Sprinter", unit: "SA108-009" },
-        { id: "Os 10019", depTime: "09:15", type: "Sprinter", unit: "EN57AL-1543" },
-        { id: "Os 10021", depTime: "10:45", type: "Sprinter", unit: "SA133-002" },
-        { id: "Os 10023", depTime: "12:15", type: "Sprinter", unit: "EN57AL-1551" },
-        { id: "Os 10025", depTime: "13:45", type: "Sprinter", unit: "SA133-009" },
-        { id: "Os 10027", depTime: "15:15", type: "Sprinter", unit: "EN57AL-1544" },
-        { id: "Os 10029", depTime: "16:45", type: "Sprinter", unit: "SA133-020" },
-        { id: "Os 10031", depTime: "18:15", type: "Sprinter", unit: "EN57AL-1555" },
-        { id: "Os 10033", depTime: "19:45", type: "Sprinter", unit: "SA105-103" },
-        { id: "Os 10035", depTime: "21:15", type: "Sprinter", unit: "EN57AL-1529" },
+        { id: "Os 10015", depTime: "06:15", type: "Osobowy", unit: "EN57AL-1529" },
+        { id: "Os 10017", depTime: "07:45", type: "Osobowy", unit: "SA108-009" },
+        { id: "Os 10019", depTime: "09:15", type: "Osobowy", unit: "EN57AL-1543" },
+        { id: "Os 10021", depTime: "10:45", type: "Osobowy", unit: "SA133-002" },
+        { id: "Os 10023", depTime: "12:15", type: "Osobowy", unit: "EN57AL-1551" },
+        { id: "Os 10025", depTime: "13:45", type: "Osobowy", unit: "SA133-009" },
+        { id: "Os 10027", depTime: "15:15", type: "Osobowy", unit: "EN57AL-1544" },
+        { id: "Os 10029", depTime: "16:45", type: "Osobowy", unit: "SA133-020" },
+        { id: "Os 10031", depTime: "18:15", type: "Osobowy", unit: "EN57AL-1555" },
+        { id: "Os 10033", depTime: "19:45", type: "Osobowy", unit: "SA105-103" },
+        { id: "Os 10035", depTime: "21:15", type: "Osobowy", unit: "EN57AL-1529" },
         { id: "Os 10037", depTime: "22:45", type: "Nocny Sprinter", unit: "SA133-012" }
     ],
     "Czyżew->Białystok": [
@@ -645,14 +646,13 @@ const BASE_TIMETABLE = {
         { id: "Os 10038", depTime: "23:30", type: "Nocny Sprinter", unit: "SA133-001" }
     ],
     "Białystok->Czeremcha": [
-        { id: "Os 30031", depTime: "05:32", type: "Sprinter", unit: "SA108-009" },
-        { id: "Os 30033", depTime: "15:00", type: "Sprinter", unit: "SA133-002" },
+        { id: "Os 30031", depTime: "06:52", type: "Osobowy", unit: "SA108-009" },
+        { id: "Os 30033", depTime: "15:00", type: "Osobowy", unit: "SA105-103" },
         { id: "Os 30035", depTime: "22:30", type: "Nocny Sprinter", unit: "SA133-019" }
     ],
     "Czeremcha->Białystok": [
-        { id: "Os 30032", depTime: "07:38", type: "Sprinter", unit: "SA133-020" },
-        { id: "Os 30034", depTime: "16:00", type: "Sprinter", unit: "SA105-103" },
-        { id: "Os 30036", depTime: "23:50", type: "Nocny Sprinter", unit: "SA108-007" }
+        { id: "Os 30032", depTime: "04:54", type: "Osobowy", unit: "SA108-009" },
+        { id: "Os 30034", depTime: "18:00", type: "Osobowy", unit: "SA105-103" },
     ]
 };
 
