@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="icon" href="/favicon-32x32.png">
-    <title>Koleje Podlaskie | Zaplanuj podróż z nami!</title>
+    <title>Koleje Podlaskie | Zaplanuj podróż z pociągami KP</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
+<link rel="icon" href="/favicon-32x32.png">
     <script type="importmap">
     {
       "imports": {
@@ -26,28 +26,11 @@
                 </div>
             </div>
             
-            <div class="flex items-center gap-4">
-                <button id="mobile-menu-btn" class="text-gray-700">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
-                </button>
+            <div class="hidden sm:block">
+                <!-- Navigation links removed -->
             </div>
         </div>
     </header>
-
-    <div id="mobile-menu" class="fixed inset-0 bg-white z-[60] flex-col p-6 hidden">
-        <div class="flex justify-between items-center mb-8">
-            <img src="/Podlaskie.png" alt="Logo" class="h-10">
-            <button id="close-menu-btn"><i data-lucide="x" class="w-8 h-8"></i></button>
-        </div>
-        <nav class="flex flex-col gap-6 text-xl font-bold">
-            <a href="#">Rozkład jazdy</a>
-            <a href="#">Kup Bilet</a>
-            <a href="#">Mapa Połączeń</a>
-            <a href="#">Aktualności</a>
-            <a href="#">Dla Pasażera</a>
-            <a href="#">Kontakt</a>
-        </nav>
-    </div>
 
     <section class="relative h-[450px] flex items-center overflow-hidden">
         <img src="/EN57AL-1529.jpg" alt="Pociąg Kolei Podlaskich EN57AL-1529" class="absolute inset-0 w-full h-full object-cover">
@@ -610,8 +593,7 @@
                                     <div class="bg-white/10 p-3 rounded-xl"><i data-lucide="train-front" class="w-5 h-5 text-green-400"></i></div>
                                     <div>
                                         <div class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Pociąg</div>
-                                        <div class="font-bold" id="booking-train-type">Sprinter KP8001</div>
-
+                                        <div class="font-bold" id="booking-train-type">Os 20001</div>
                                     </div>
                                 </div>
 
