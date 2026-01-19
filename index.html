@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="icon" href="/favicon-32x32.png">
     <title>Koleje Podlaskie | Zaplanuj podróż z nami!</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="/favicon-32x32.png">
     <script type="importmap">
     {
       "imports": {
@@ -295,10 +295,10 @@
                             </div>
                         </div>
 
-                        <div id="step-3-content" class="hidden space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-300">
+                        <div id="step-3-content" class="hidden space-y-6 sm:space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-300">
                             <div class="flex items-center justify-between gap-4">
                                 <div>
-                                    <h3 class="text-2xl font-bold text-gray-800">Metoda płatności</h3>
+                                    <h3 class="text-xl sm:text-2xl font-bold text-gray-800">Metoda płatności</h3>
                                     <p class="text-xs text-gray-500 mt-1">
                                         Zapłać bezpiecznie online za pomocą szybkich płatności BLIK lub karty płatniczej.
                                     </p>
@@ -394,14 +394,14 @@
                             </div>
 
                             <div id="payment-card-details" class="hidden space-y-6 animate-in fade-in slide-in-from-top-4 duration-300">
-                                <div class="relative w-full max-w-sm mx-auto h-48 bg-gradient-to-br from-slate-900 via-slate-800 to-black rounded-3xl p-6 text-white shadow-2xl flex flex-col justify-between overflow-hidden group">
-                                    <div class="absolute -right-10 -top-10 w-40 h-40 bg-white/10 blur-3xl rounded-full pointer-events-none"></div>
+                                <div class="relative w-full max-w-[320px] sm:max-w-sm mx-auto h-44 sm:h-48 bg-gradient-to-br from-slate-900 via-slate-800 to-black rounded-3xl p-5 sm:p-6 text-white shadow-2xl flex flex-col justify-between overflow-hidden group">
+                                    <div class="absolute -right-10 -top-10 w-32 h-32 sm:w-40 sm:h-40 bg-white/10 blur-3xl rounded-full pointer-events-none"></div>
                                     <div class="flex justify-between items-start relative z-10">
                                         <div class="w-10 h-7 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-md opacity-80"></div>
                                         <i data-lucide="wifi" class="w-5 h-5 rotate-90 text-white/40"></i>
                                     </div>
                                     <div class="space-y-3 relative z-10">
-                                        <div id="card-preview-number" class="text-lg font-mono tracking-[0.3em] text-white/90">
+                                        <div id="card-preview-number" class="text-base sm:text-lg font-mono tracking-[0.2em] sm:tracking-[0.3em] text-white/90">
                                             •••• •••• •••• ••••
                                         </div>
                                         <div class="flex justify-between items-end gap-6">
@@ -542,7 +542,7 @@
 
                                     <div class="grid grid-cols-2 gap-4">
                                         <div>
-                                            <div class="text-[10px] font-bold text-gray-400 uppercase">Data i Godzina</div>
+                                            <div class="text-[10px] font-bold text-gray-400 uppercase">Data i Godzina Odjazdu</div>
                                             <div class="font-bold text-sm"><span id="ticket-date-val">20.05.2026</span>, <span id="ticket-time-val">15:00</span></div>
                                         </div>
                                         <div class="text-right">
@@ -573,8 +573,8 @@
 
                     </div>
 
-                    <div class="lg:col-span-1" id="booking-summary-panel">
-                        <div class="bg-gray-900 text-white rounded-[2.5rem] p-8 sticky top-8 overflow-hidden shadow-2xl">
+                    <div class="lg:col-span-1 order-first lg:order-last" id="booking-summary-panel">
+                        <div class="bg-gray-900 text-white rounded-[2.5rem] p-6 sm:p-8 sticky top-8 overflow-hidden shadow-2xl">
                             <div class="absolute top-0 right-0 w-32 h-32 bg-green-500/10 blur-3xl rounded-full -mr-16 -mt-16"></div>
                             
                             <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
@@ -593,8 +593,16 @@
                                 <div class="flex items-start gap-4">
                                     <div class="bg-white/10 p-3 rounded-xl"><i data-lucide="calendar" class="w-5 h-5 text-green-400"></i></div>
                                     <div>
-                                        <div class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Kiedy</div>
+                                        <div class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Data</div>
                                         <div class="font-bold" id="booking-date-info">20 maja 2026</div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div class="bg-white/10 p-3 rounded-xl"><i data-lucide="clock" class="w-5 h-5 text-green-400"></i></div>
+                                    <div>
+                                        <div class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Odjazd</div>
+                                        <div class="font-bold" id="booking-time-info">12:00</div>
                                     </div>
                                 </div>
 
