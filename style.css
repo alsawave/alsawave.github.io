@@ -26,6 +26,27 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: #16a34a;
 }
+
+/* Mobile Friendly Enhancements */
+input, select, button {
+    min-height: 48px;
+    font-size: 16px !important; /* Prevents iOS zoom on focus */
+}
+
+@media (max-width: 640px) {
+    .hero-panel {
+        padding: 1.25rem !important;
+    }
+    
+    h1 {
+        font-size: 1.1rem !important;
+    }
+
+    .booking-step-label span:last-child {
+        display: none;
+    }
+}
+
 .hero-panel {
     border: 1px solid rgba(148, 163, 184, 0.3);
     box-shadow:
