@@ -10,23 +10,6 @@ const ICON_CONFIG = {
 
 createIcons(ICON_CONFIG);
 
-const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-const closeMenuBtn = document.getElementById('close-menu-btn');
-const mobileMenu = document.getElementById('mobile-menu');
-
-function toggleMenu() {
-    mobileMenu.classList.toggle('hidden');
-    mobileMenu.classList.toggle('flex');
-    if (!mobileMenu.classList.contains('hidden')) {
-        document.body.style.overflow = 'hidden';
-    } else {
-        document.body.style.overflow = '';
-    }
-}
-
-mobileMenuBtn.addEventListener('click', toggleMenu);
-closeMenuBtn.addEventListener('click', toggleMenu);
-
 const newsData = [
     {
         id: 0,
@@ -632,17 +615,17 @@ const BASE_TIMETABLE = {
     ],
     "Czyżew->Białystok": [
         { id: "Os 10012", depTime: "04:00", type: "Nocny Sprinter", unit: "SA108-007" },
-        { id: "Os 10014", depTime: "05:30", type: "Sprinter", unit: "EN57AL-1543" },
-        { id: "Os 10016", depTime: "07:00", type: "Sprinter", unit: "SA108-009" },
-        { id: "Os 10018", depTime: "08:30", type: "Sprinter", unit: "EN57AL-1551" },
-        { id: "Os 10020", depTime: "10:00", type: "Sprinter", unit: "SA133-002" },
-        { id: "Os 10022", depTime: "11:30", type: "Sprinter", unit: "EN57AL-1544" },
-        { id: "Os 10024", depTime: "13:00", type: "Sprinter", unit: "SA133-009" },
-        { id: "Os 10026", depTime: "14:30", type: "Sprinter", unit: "EN57AL-1555" },
-        { id: "Os 10028", depTime: "16:00", type: "Sprinter", unit: "SA105-103" },
-        { id: "Os 10030", depTime: "17:30", type: "Sprinter", unit: "SA133-020" },
-        { id: "Os 10032", depTime: "19:00", type: "Sprinter", unit: "EN57AL-1529" },
-        { id: "Os 10034", depTime: "20:30", type: "Sprinter", unit: "SA108-009" },
+        { id: "Os 10014", depTime: "05:30", type: "Osobowy", unit: "EN57AL-1543" },
+        { id: "Os 10016", depTime: "07:00", type: "Osobowy", unit: "SA108-009" },
+        { id: "Os 10018", depTime: "08:30", type: "Osobowy", unit: "EN57AL-1551" },
+        { id: "Os 10020", depTime: "10:00", type: "Osobowy", unit: "SA133-002" },
+        { id: "Os 10022", depTime: "11:30", type: "Osobowy", unit: "EN57AL-1544" },
+        { id: "Os 10024", depTime: "13:00", type: "Osobowy", unit: "SA133-009" },
+        { id: "Os 10026", depTime: "14:30", type: "Osobowy", unit: "EN57AL-1555" },
+        { id: "Os 10028", depTime: "16:00", type: "Osobowy", unit: "SA105-103" },
+        { id: "Os 10030", depTime: "17:30", type: "Osobowy", unit: "SA133-020" },
+        { id: "Os 10032", depTime: "19:00", type: "Osobowy", unit: "EN57AL-1529" },
+        { id: "Os 10034", depTime: "20:30", type: "Osobowy", unit: "SA108-009" },
         { id: "Os 10036", depTime: "22:00", type: "Nocny Sprinter", unit: "SA133-012" },
         { id: "Os 10038", depTime: "23:30", type: "Nocny Sprinter", unit: "SA133-001" }
     ],
@@ -668,43 +651,44 @@ function minutesToTime(mins) {
     const mm = m % 60;
     return `${h.toString().padStart(2, '0')}:${mm.toString().padStart(2, '0')}`;
 }
-function generateTrains(fromName, toName, selectedTimeMinutes = 0) {
+function generateTrains(fromName, toName, selectedTimeMinutes = 0, targetDateStr = null) {
     const now = new Date();
     const currentRealMins = now.getHours() * 60 + now.getMinutes();
-    const isToday = document.getElementById('travel-date').value === now.toLocaleDateString('en-CA');
-
-    const s1L38 = STATIONS_L38.find(s => s.name === fromName);
-    const s1L6 = STATIONS_L6.find(s => s.name === fromName);
-    const s1P3 = STATIONS_P3.find(s => s.name === fromName);
-    const s2L38 = STATIONS_L38.find(s => s.name === toName);
-    const s2L6 = STATIONS_L6.find(s => s.name === toName);
-    const s2P3 = STATIONS_P3.find(s => s.name === toName);
-
-    const junctionStations = ["Białystok", "Białystok Zielone Wzgórza"];
-    const isCrossLine = (s1L38 && (s2L6 || s2P3)) || (s1L6 && (s2L38 || s2P3)) || (s1P3 && (s2L38 || s2L6));
-    const requiresSwitch = isCrossLine && !junctionStations.includes(fromName) && !junctionStations.includes(toName);
-
-    const getLineData = (s1, s2) => {
-        if (s1L38 && s2L38) return { key: s2.km > s1.km ? "Białystok->Grajewo" : "Grajewo->Białystok", speed: 50, originKm: s2.km > s1.km ? 0 : 82.477 };
-        if (s1L6 && s2L6) return { key: s2.km < s1.km ? "Białystok->Czyżew" : "Czyżew->Białystok", speed: 50, originKm: s2.km < s1.km ? 177.305 : 111.848 };
-        if (s1P3 && s2P3) return { key: s2.km > s1.km ? "Białystok->Czeremcha" : "Czeremcha->Białystok", speed: 40, originKm: s2.km > s1.km ? 0 : 77.003 };
-        return null;
-    };
+    const dateToCompare = targetDateStr || document.getElementById('travel-date').value;
+    const isToday = dateToCompare === now.toLocaleDateString('en-CA');
 
     const getDurationStr = (mins) => mins >= 60 ? `${Math.floor(mins / 60)}h ${mins % 60}min` : `${mins}min`;
 
-    if (!requiresSwitch) {
-        const s1 = s1L38 || s1L6 || s1P3;
-        const s2 = s2L38 || s2L6 || s2P3;
-        const line = getLineData(s1, s2);
-        if (!line) return [];
+    const getLineDataForStations = (s1, s2) => {
+        if (!s1 || !s2) return null;
+        if (STATIONS_P2.find(s => s.name === s1.name) && STATIONS_P2.find(s => s.name === s2.name)) {
+            const p2s1 = STATIONS_P2.find(s => s.name === s1.name);
+            const p2s2 = STATIONS_P2.find(s => s.name === s2.name);
+            return { key: p2s2.km > p2s1.km ? "Białystok->Grajewo" : "Grajewo->Białystok", speed: 50, originKm: p2s2.km > p2s1.km ? 0 : 82.477, s1: p2s1, s2: p2s2 };
+        }
+        if (STATIONS_P1.find(s => s.name === s1.name) && STATIONS_P1.find(s => s.name === s2.name)) {
+            const p1s1 = STATIONS_P1.find(s => s.name === s1.name);
+            const p1s2 = STATIONS_P1.find(s => s.name === s2.name);
+            return { key: p1s2.km < p1s1.km ? "Białystok->Czyżew" : "Czyżew->Białystok", speed: 50, originKm: p1s2.km < p1s1.km ? 177.305 : 111.848, s1: p1s1, s2: p1s2 };
+        }
+        if (STATIONS_P3.find(s => s.name === s1.name) && STATIONS_P3.find(s => s.name === s2.name)) {
+            const p3s1 = STATIONS_P3.find(s => s.name === s1.name);
+            const p3s2 = STATIONS_P3.find(s => s.name === s2.name);
+            return { key: p3s2.km > p3s1.km ? "Białystok->Czeremcha" : "Czeremcha->Białystok", speed: 40, originKm: p3s2.km > p3s1.km ? 0 : 77.003, s1: p3s1, s2: p3s2 };
+        }
+        return null;
+    };
 
+    const directLine = getLineDataForStations({name: fromName}, {name: toName});
+
+    if (directLine) {
+        const { s1, s2, key, speed, originKm } = directLine;
         const distanceKm = Math.abs(s1.km - s2.km);
-        const distFromOrigin = Math.abs(s1.km - line.originKm);
-        const timeFromOrigin = Math.round((distFromOrigin / line.speed) * 60);
-        const travelTime = Math.max(5, Math.round((distanceKm / line.speed) * 60));
+        const distFromOrigin = Math.abs(s1.km - originKm);
+        const timeFromOrigin = Math.round((distFromOrigin / speed) * 60);
+        const travelTime = Math.max(5, Math.round((distanceKm / speed) * 60));
 
-        const timetable = BASE_TIMETABLE[line.key] || [];
+        const timetable = BASE_TIMETABLE[key] || [];
         return timetable.map(slot => {
             const depMins = timeToMinutes(slot.depTime) + timeFromOrigin;
             const arrMins = depMins + travelTime;
@@ -718,54 +702,77 @@ function generateTrains(fromName, toName, selectedTimeMinutes = 0) {
             return m >= selectedTimeMinutes && (!isToday || m >= currentRealMins);
         });
     } else {
-        // Cross-line via Białystok
-        const s1 = s1L38 || s1L6 || s1P3;
-        const s2 = s2L38 || s2L6 || s2P3;
+        // Different lines: Route through junction (Białystok)
         const biaName = "Białystok";
-        const bia38 = STATIONS_L38.find(s => s.name === biaName);
-        const bia6 = STATIONS_L6.find(s => s.name === biaName);
-        const biaP3 = STATIONS_P3.find(s => s.name === biaName);
-        const sBia = s1L38 ? bia38 : (s1L6 ? bia6 : biaP3);
-        const eBia = s2L38 ? bia38 : (s2L6 ? bia6 : biaP3);
+        const leg1Line = getLineDataForStations({name: fromName}, {name: biaName});
+        const leg2Line = getLineDataForStations({name: biaName}, {name: toName});
 
-        const leg1 = getLineData(s1, sBia);
-        const leg2 = getLineData(eBia, s2);
-        if (!leg1 || !leg2) return [];
+        if (!leg1Line || !leg2Line) return [];
 
-        const d1 = Math.abs(s1.km - sBia.km);
-        const d2 = Math.abs(s2.km - eBia.km);
-        const t1 = Math.round((d1 / leg1.speed) * 60);
-        const t2 = Math.round((d2 / leg2.speed) * 60);
-        const timeFromOrigin1 = Math.round((Math.abs(s1.km - leg1.originKm) / leg1.speed) * 60);
+        const s1 = leg1Line.s1;
+        const s1Junction = leg1Line.s2;
+        const s2Junction = leg2Line.s1;
+        const s2 = leg2Line.s2;
 
-        const timetable1 = BASE_TIMETABLE[leg1.key] || [];
-        const timetable2 = BASE_TIMETABLE[leg2.key] || [];
+        const d1 = Math.abs(s1.km - s1Junction.km);
+        const d2 = Math.abs(s2.km - s2Junction.km);
+        const t1 = Math.round((d1 / leg1Line.speed) * 60);
+        const t2 = Math.round((d2 / leg2Line.speed) * 60);
+        
+        const leg1FromOrigin = Math.round((Math.abs(s1.km - leg1Line.originKm) / leg1Line.speed) * 60);
+        const leg2JunctionFromOrigin = Math.round((Math.abs(s2Junction.km - leg2Line.originKm) / leg2Line.speed) * 60);
 
-        return timetable1.map(slot => {
-            const dep1Mins = timeToMinutes(slot.depTime) + timeFromOrigin1;
-            const arrBiaMins = dep1Mins + t1;
-            const conn = timetable2.find(s => timeToMinutes(s.depTime) >= arrBiaMins + 12);
-            if (!conn) return null;
+        const timetable1 = BASE_TIMETABLE[leg1Line.key] || [];
+        const timetable2 = BASE_TIMETABLE[leg2Line.key] || [];
 
-            const dep2Mins = timeToMinutes(conn.depTime);
-            const arrFinalMins = dep2Mins + t2;
-            const totalDuration = arrFinalMins - dep1Mins;
+        const results = [];
+        timetable1.forEach(slot1 => {
+            const dep1Mins = timeToMinutes(slot1.depTime) + leg1FromOrigin;
+            const arrJunctionMins = dep1Mins + t1;
 
-            return {
-                id: slot.id, from: fromName, to: toName, distance: Math.floor(d1 + d2),
-                depTime: minutesToTime(dep1Mins), arrTime: minutesToTime(arrFinalMins), duration: getDurationStr(totalDuration),
-                price: parseFloat(((d1 + d2) * 0.34625).toFixed(2)), type: slot.type, requiresSwitch: true,
-                connection: { station: "Białystok", arrivalTime: minutesToTime(arrBiaMins), departureTime: conn.depTime, nextTrainId: conn.id, nextTrainType: conn.type }
-            };
-        }).filter(t => {
-            if (!t) return false;
-            const m = timeToMinutes(t.depTime);
-            return m >= selectedTimeMinutes && (!isToday || m >= currentRealMins);
+            timetable2.forEach(slot2 => {
+                const dep2JunctionMins = timeToMinutes(slot2.depTime) + leg2JunctionFromOrigin;
+                
+                if (dep2JunctionMins >= arrJunctionMins + 10) {
+                    const arrFinalMins = dep2JunctionMins + t2;
+                    const totalDuration = arrFinalMins - dep1Mins;
+
+                    results.push({
+                        id: slot1.id, from: fromName, to: toName, distance: Math.floor(d1 + d2),
+                        depTime: minutesToTime(dep1Mins), arrTime: minutesToTime(arrFinalMins), duration: getDurationStr(totalDuration),
+                        price: parseFloat(((d1 + d2) * 0.34625).toFixed(2)), type: slot1.type, requiresSwitch: true,
+                        connection: { 
+                            station: "Białystok", 
+                            arrivalTime: minutesToTime(arrJunctionMins), 
+                            departureTime: minutesToTime(dep2JunctionMins), 
+                            nextTrainId: slot2.id, 
+                            nextTrainType: slot2.type 
+                        }
+                    });
+                }
+            });
         });
+
+        const uniqueLeg1 = new Map();
+        results.forEach(r => {
+            const m = timeToMinutes(r.depTime);
+            if (m >= selectedTimeMinutes && (!isToday || m >= currentRealMins)) {
+                if (!uniqueLeg1.has(r.id) || timeToMinutes(r.arrTime) < timeToMinutes(uniqueLeg1.get(r.id).arrTime)) {
+                    uniqueLeg1.set(r.id, r);
+                }
+            }
+        });
+        
+        return Array.from(uniqueLeg1.values()).sort((a, b) => timeToMinutes(a.depTime) - timeToMinutes(b.depTime));
     }
 }
 
 
+
+function formatDatePolish(date) {
+    const months = ["sty", "lut", "mar", "kwi", "maj", "cze", "lip", "sie", "wrz", "paź", "lis", "gru"];
+    return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+}
 
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -791,20 +798,35 @@ searchForm.addEventListener('submit', (e) => {
     const minute = parseInt(document.getElementById('travel-minute').value);
     const selectedMinutes = hour * 60 + minute;
 
-    // Additional check: if date is today, ensure the selected time hasn't passed in real-world time 
-    // (though for simulation purposes we primarily respect the user's dropdown choice)
-    const isToday = travelDate.getTime() === today.getTime();
+    const isTodayFlag = travelDate.getTime() === today.getTime();
     const now = new Date();
     const currentMins = now.getHours() * 60 + now.getMinutes();
-    const effectiveMins = isToday ? Math.max(selectedMinutes, currentMins) : selectedMinutes;
-    const displayTime = minutesToTime(effectiveMins);
     
     currentSearchData = { from, to, date: dateInputVal };
-    const trains = generateTrains(from, to, selectedMinutes);
+    let trains = generateTrains(from, to, selectedMinutes);
+    let isNextDayMode = false;
+    let nextDayStr = "";
+    let effectiveDateStr = dateInputVal;
+
+    if (trains.length === 0) {
+        const tomorrow = new Date(travelDate);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const tomorrowISODate = tomorrow.toLocaleDateString('en-CA');
+        nextDayStr = formatDatePolish(tomorrow);
+        effectiveDateStr = tomorrowISODate;
+        trains = generateTrains(from, to, 0, tomorrowISODate);
+        isNextDayMode = (trains.length > 0);
+        if (isNextDayMode) {
+            currentSearchData.date = effectiveDateStr;
+        }
+    }
     
     resultsContainer.innerHTML = '';
-    resultsTitle.innerText = `Połączenia: ${from} ➔ ${to} (${dateInputVal})`;
+    resultsTitle.innerText = `Połączenia: ${from} ➔ ${to} (${isNextDayMode ? effectiveDateStr : dateInputVal})`;
     
+    // Always show section if we reached this point
+    resultsSection.classList.remove('hidden');
+
     if (trains.length === 0) {
         resultsContainer.innerHTML = `
             <div class="bg-white p-12 rounded-3xl border border-gray-100 text-center space-y-4">
@@ -812,13 +834,26 @@ searchForm.addEventListener('submit', (e) => {
                     <i data-lucide="clock" class="w-10 h-10"></i>
                 </div>
                 <h4 class="text-xl font-bold text-gray-800">Brak połączeń</h4>
-                <p class="text-gray-500 max-w-sm mx-auto">W wybranym dniu po godzinie ${displayTime} nie kursują już żadne pociągi na tej trasie.</p>
-                <button onclick="document.querySelector('.hero-panel').scrollIntoView({behavior:'smooth'})" class="text-green-600 font-bold hover:underline">Zmień godzinę lub datę</button>
+                <p class="text-gray-500 max-w-sm mx-auto">Niestety, nie znaleziono żadnych połączeń na wybranej trasie w najbliższym czasie.</p>
+                <button onclick="document.querySelector('.hero-panel').scrollIntoView({behavior:'smooth'})" class="text-green-600 font-bold hover:underline">Zmień parametry wyszukiwania</button>
             </div>
         `;
     }
 
-    trains.forEach(train => {
+    if (isNextDayMode) {
+        const separator = document.createElement('div');
+        separator.className = "flex items-center gap-4 py-8";
+        separator.innerHTML = `
+            <div class="flex-1 h-px bg-gray-200"></div>
+            <div class="px-4 py-1.5 bg-gray-100 text-gray-500 rounded-full text-sm font-black uppercase tracking-widest whitespace-nowrap">
+                Następny dzień: ${nextDayStr}
+            </div>
+            <div class="flex-1 h-px bg-gray-200"></div>
+        `;
+        resultsContainer.appendChild(separator);
+    }
+
+    trains.forEach((train, index) => {
         const card = document.createElement('div');
         const badgeColor = train.type === 'Nocny Sprinter' ? 'bg-indigo-700' : 'bg-green-600';
         card.className = "bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col md:flex-row items-center justify-between gap-6 hover:shadow-md transition";
@@ -883,12 +918,13 @@ searchForm.addEventListener('submit', (e) => {
     resultsSection.classList.remove('hidden');
     resultsSection.scrollIntoView({ behavior: 'smooth' });
     
-    // Add listeners to new buttons
-    document.querySelectorAll('.buy-btn').forEach((btn, index) => {
+    // Add listeners to new buttons using the train data
+    const buyButtons = resultsContainer.querySelectorAll('.buy-btn');
+    buyButtons.forEach((btn, idx) => {
         btn.addEventListener('click', () => {
             currentBasePrice = parseFloat(btn.dataset.price);
             document.getElementById('selected-train-id').value = btn.dataset.id;
-            openBookingModal(trains[index]);
+            openBookingModal(trains[idx]);
         });
     });
 });
@@ -903,7 +939,7 @@ function openBookingModal(train) {
     bookingRouteInfo.innerText = `${currentSearchData.from} ➔ ${currentSearchData.to}`;
     document.getElementById('booking-date-info').innerText = currentSearchData.date;
     document.getElementById('booking-time-info').innerText = train.depTime;
-    document.getElementById('booking-train-type').innerText = `${train.type} ${train.id}`;
+    document.getElementById('booking-train-type').innerText = train.id;
     updateFinalPrice();
     bookingModal.classList.remove('hidden');
     bookingModal.classList.add('flex');
