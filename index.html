@@ -6,7 +6,6 @@
     <title>Koleje Podlaskie | Zaplanuj podróż z pociągami KP</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
-<link rel="icon" href="/favicon-32x32.png">
     <script type="importmap">
     {
       "imports": {
@@ -16,23 +15,8 @@
     }
     </script>
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans">
-    <header class="sticky top-0 z-50 bg-white shadow-md">
-        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <img src="/Podlaskie.png" alt="Logo Koleje Podlaskie" class="h-10 w-auto">
-                <div class="hidden sm:block">
-                    <h1 class="font-light text-xl leading-tight text-green-600 font-montserrat tracking-tight">Koleje Podlaskie</h1>
-                </div>
-            </div>
-            
-            <div class="hidden sm:block">
-                <!-- Navigation links removed -->
-            </div>
-        </div>
-    </header>
 
-    <section class="relative h-[450px] flex items-center overflow-hidden">
+    <section class="relative h-[450px] flex">
         <img src="/EN57AL-1529.jpg" alt="Pociąg Kolei Podlaskich EN57AL-1529" class="absolute inset-0 w-full h-full object-cover">
         <div class="absolute inset-0 bg-black/30"></div>
         
@@ -40,32 +24,34 @@
             <div class="max-w-2xl bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-2xl hero-panel">
                 <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
                     <i data-lucide="search" class="text-green-600"></i>
-                    Dokąd jedziemy?
+                    <span data-i18n="hero_title">Dokąd jedziemy?</span>
                 </h2>
                 <form id="search-form">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                        <div class="relative">
-                            <label class="text-xs font-bold text-gray-500 uppercase ml-2">Z: Skąd</label>
-                            <select id="from-station" required class="w-full p-3 border rounded-xl focus:ring-2 focus:ring-green-500 outline-none bg-white appearance-none">
-                                <option value="" disabled selected>Wybierz stację</option>
-                            </select>
-                            <i data-lucide="map-pin" class="absolute right-3 top-9 w-5 h-5 text-gray-400 pointer-events-none"></i>
+                        <div class="relative station-search-container">
+                            <label class="text-xs font-bold text-gray-500 uppercase ml-2" data-i18n="label_from">Z: Skąd</label>
+                            <div class="relative">
+                                <input type="text" id="from-station-input" required autocomplete="off" placeholder="Wpisz stację..." data-i18n-placeholder="placeholder_station" class="w-full p-3 pr-10 border rounded-xl focus:ring-2 focus:ring-green-500 outline-none bg-white appearance-none">
+                                <i data-lucide="map-pin" class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none"></i>
+                            </div>
+                            <div id="from-suggestions" class="absolute z-50 left-0 right-0 mt-1 bg-white border rounded-xl shadow-xl max-h-60 overflow-y-auto hidden"></div>
                         </div>
-                        <div class="relative">
-                            <label class="text-xs font-bold text-gray-500 uppercase ml-2">Do: Dokąd</label>
-                            <select id="to-station" required class="w-full p-3 border rounded-xl focus:ring-2 focus:ring-green-500 outline-none bg-white appearance-none">
-                                <option value="" disabled selected>Wybierz stację</option>
-                            </select>
-                            <i data-lucide="map-pin" class="absolute right-3 top-9 w-5 h-5 text-gray-400 pointer-events-none"></i>
+                        <div class="relative station-search-container">
+                            <label class="text-xs font-bold text-gray-500 uppercase ml-2" data-i18n="label_to">Do: Dokąd</label>
+                            <div class="relative">
+                                <input type="text" id="to-station-input" required autocomplete="off" placeholder="Wpisz stację..." data-i18n-placeholder="placeholder_station" class="w-full p-3 pr-10 border rounded-xl focus:ring-2 focus:ring-green-500 outline-none bg-white appearance-none">
+                                <i data-lucide="map-pin" class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none"></i>
+                            </div>
+                            <div id="to-suggestions" class="absolute z-50 left-0 right-0 mt-1 bg-white border rounded-xl shadow-xl max-h-60 overflow-y-auto hidden"></div>
                         </div>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                         <div class="relative">
-                            <label class="text-xs font-bold text-gray-500 uppercase ml-2">Kiedy</label>
+                            <label class="text-xs font-bold text-gray-500 uppercase ml-2" data-i18n="label_when">Kiedy</label>
                             <input type="date" id="travel-date" required class="w-full p-3 border rounded-xl focus:ring-2 focus:ring-green-500 outline-none">
                         </div>
                         <div class="relative">
-                            <label class="text-xs font-bold text-gray-500 uppercase ml-2">Godzina</label>
+                            <label class="text-xs font-bold text-gray-500 uppercase ml-2" data-i18n="label_time">Godzina</label>
                             <div class="flex items-center bg-white border rounded-xl focus-within:ring-2 focus-within:ring-green-500 transition overflow-hidden h-[50px] sm:max-w-[140px]">
                                 <select id="travel-hour" class="flex-1 h-full outline-none bg-transparent appearance-none text-center cursor-pointer font-medium">
                                 </select>
@@ -76,7 +62,7 @@
                         </div>
                     </div>
                     <button type="submit" class="w-full bg-green-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-green-700 transition shadow-lg flex justify-center items-center gap-2">
-                        Szukaj połączenia
+                        <span data-i18n="btn_search">Szukaj połączenia</span>
                         <i data-lucide="arrow-right" class="w-5 h-5"></i>
                     </button>
                 </form>
@@ -84,25 +70,23 @@
         </div>
     </section>
 
-    <section id="search-results-section" class="py-12 bg-gray-50 hidden scroll-mt-20">
-        <div class="container mx-auto px-4">
-            <div class="flex items-center justify-between mb-8">
-                <h3 class="text-2xl font-bold" id="results-title">Znalezione połączenia</h3>
-                <button id="close-results" class="text-gray-500 hover:text-red-500"><i data-lucide="x-circle"></i></button>
-            </div>
-            <div id="results-container" class="space-y-4">
-            </div>
+    <div class="bg-amber-50 border-y border-amber-200 py-4">
+        <div class="container mx-auto px-4 flex items-center gap-3 text-amber-800">
+            <i data-lucide="info" class="w-5 h-5 shrink-0"></i>
+            <p class="text-sm font-bold leading-relaxed" data-i18n="banner_text">
+                Modernizacja systemu zakupu biletów on-line. Prosimy o zakup biletów w aplikacji Koleje Podlaskie, u kierownika pociągu, w biletomatach lub w kasach biletowych. Przepraszamy za niedogodności.
+            </p>
         </div>
-    </section>
+    </div>
 
     <section class="py-16 container mx-auto px-4">
         <div class="flex justify-between items-end mb-8">
             <div>
-                <h3 class="text-3xl font-bold text-gray-800">Aktualności</h3>
-                <p class="text-gray-500">Bądź na bieżąco z życiem regionu</p>
+                <h3 class="text-3xl font-bold text-gray-800" data-i18n="news_title">Aktualności</h3>
+                <p class="text-gray-500" data-i18n="news_subtitle">Bądź na bieżąco z życiem regionu</p>
             </div>
             <a href="#" id="show-all-news" class="text-green-600 font-bold flex items-center gap-1 hover:underline">
-                Wszystkie wpisy <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                <span data-i18n="news_all">Wszystkie wpisy</span> <i data-lucide="chevron-right" class="w-4 h-4"></i>
             </a>
         </div>
         
@@ -125,7 +109,7 @@
                 <div id="news-modal-content" class="text-gray-600 leading-relaxed space-y-4 max-h-60 overflow-y-auto pr-2">
                 </div>
                 <div class="mt-8 pt-6 border-t flex justify-end">
-                    <button id="close-news-modal-btn" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-2 rounded-xl font-bold transition">
+                    <button id="close-news-modal-btn" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-2 rounded-xl font-bold transition" data-i18n="btn_close">
                         Zamknij
                     </button>
                 </div>
@@ -136,8 +120,8 @@
     <section class="bg-green-900 text-white py-16 overflow-hidden">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
             <div class="flex-1 text-center md:text-left">
-                <h2 class="text-4xl font-bold mb-6">Pobierz aplikację<br>Koleje Podlaskie</h2>
-                <p class="text-green-100 text-lg mb-8 max-w-lg mx-auto md:mx-0">
+                <h2 class="text-4xl font-bold mb-6" data-i18n="app_title">Pobierz aplikację<br>Koleje Podlaskie</h2>
+                <p class="text-green-100 text-lg mb-8 max-w-lg mx-auto md:mx-0" data-i18n="app_desc">
                     Kupuj bilety w 30 sekund, sprawdzaj opóźnienia w czasie rzeczywistym i korzystaj ze specjalnych rabatów tylko dla użytkowników aplikacji.
                 </p>
                 <div class="flex flex-wrap justify-center md:justify-start gap-4">
@@ -167,63 +151,6 @@
 
 
 
-                    <div class="lg:col-span-1 order-first lg:order-last" id="booking-summary-panel">
-                        <div class="bg-gray-900 text-white rounded-[2.5rem] p-6 sm:p-8 sticky top-8 overflow-hidden shadow-2xl">
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-green-500/10 blur-3xl rounded-full -mr-16 -mt-16"></div>
-                            
-                            <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
-                                Podsumowanie
-                            </h3>
-                            
-                            <div class="space-y-6 relative z-10">
-                                <div class="flex items-start gap-4">
-                                    <div class="bg-white/10 p-3 rounded-xl"><i data-lucide="map-pin" class="w-5 h-5 text-green-400"></i></div>
-                                    <div>
-                                        <div class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Trasa</div>
-                                        <div class="font-bold text-lg" id="booking-route-info">Białystok → Grajewo</div>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex items-start gap-4">
-                                    <div class="bg-white/10 p-3 rounded-xl"><i data-lucide="calendar" class="w-5 h-5 text-green-400"></i></div>
-                                    <div>
-                                        <div class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Data</div>
-                                        <div class="font-bold" id="booking-date-info">20 maja 2026</div>
-                                    </div>
-                                </div>
-
-                                <div class="flex items-start gap-4">
-                                    <div class="bg-white/10 p-3 rounded-xl"><i data-lucide="clock" class="w-5 h-5 text-green-400"></i></div>
-                                    <div>
-                                        <div class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Odjazd</div>
-                                        <div class="font-bold" id="booking-time-info">12:00</div>
-                                    </div>
-                                </div>
-
-                                <div class="flex items-start gap-4">
-                                    <div class="bg-white/10 p-3 rounded-xl"><i data-lucide="train-front" class="w-5 h-5 text-green-400"></i></div>
-                                    <div>
-                                        <div class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Pociąg</div>
-                                        <div class="font-bold" id="booking-train-type">Os 20001</div>
-                                    </div>
-                                </div>
-
-                                <div class="border-t border-white/10 pt-6 mt-6">
-                                    <div class="flex justify-between items-end">
-                                        <div>
-                                            <div class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Do zapłaty</div>
-                                            <div class="text-4xl font-black text-green-400" id="final-price">0.00 zł</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-
     <footer class="bg-gray-100 py-12">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
@@ -234,25 +161,25 @@
                     </p>
                 </div>
                 <div>
-                    <h5 class="font-bold mb-4">Pasażer</h5>
+                    <h5 class="font-bold mb-4" data-i18n="footer_pax">Pasażer</h5>
                     <ul class="text-gray-500 text-sm space-y-2">
-                        <li><a href="#" class="hover:text-green-600">Rozkład jazdy</a></li>
-                        <li><a href="#" class="hover:text-green-600">Cennik biletów</a></li>
-                        <li><a href="#" class="hover:text-green-600">Regulamin</a></li>
-                        <li><a href="#" class="hover:text-green-600">Reklamacje</a></li>
+                        <li><a href="#" class="hover:text-green-600" data-i18n="link_timetable">Rozkład jazdy</a></li>
+                        <li><a href="#" class="hover:text-green-600" data-i18n="link_prices">Cennik biletów</a></li>
+                        <li><a href="#" class="hover:text-green-600" data-i18n="link_regulations">Regulamin</a></li>
+                        <li><a href="#" class="hover:text-green-600" data-i18n="link_complaints">Reklamacje</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h5 class="font-bold mb-4">O firmie</h5>
+                    <h5 class="font-bold mb-4" data-i18n="footer_company">O firmie</h5>
                     <ul class="text-gray-500 text-sm space-y-2">
-                        <li><a href="#" class="hover:text-green-600">O nas</a></li>
-                        <li><a href="#" class="hover:text-green-600">Praca</a></li>
-                        <li><a href="#" class="hover:text-green-600">Przetargi</a></li>
-                        <li><a href="#" class="hover:text-green-600">Kontakt dla mediów</a></li>
+                        <li><a href="#" class="hover:text-green-600" data-i18n="link_about">O nas</a></li>
+                        <li><a href="#" class="hover:text-green-600" data-i18n="link_jobs">Praca</a></li>
+                        <li><a href="#" class="hover:text-green-600" data-i18n="link_tenders">Przetargi</a></li>
+                        <li><a href="#" class="hover:text-green-600" data-i18n="link_media">Kontakt dla mediów</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h5 class="font-bold mb-4">Kontakt</h5>
+                    <h5 class="font-bold mb-4" data-i18n="footer_contact">Kontakt</h5>
                     <ul class="text-gray-500 text-sm space-y-2">
                         <li class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4"></i> 85 347 912 68</li>
                         <li class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4"></i> kontakt@podlaskie.eu</li>

@@ -1,16 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;&family=Montserrat:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&family=Montserrat:wght@700;800;900&display=swap');
 
-.font-montserrat {
-    font-family: 'Montserrat', sans-serif;
+/* Strict Font Overrides */
+* {
+    font-family: 'Outfit', sans-serif !important;
+}
+
+h1, h2, h3, h4, .font-montserrat, .font-black {
+    font-family: 'Montserrat', sans-serif !important;
 }
 
 body {
-    font-family: 'Outfit', sans-serif;
     background:
-        radial-gradient(circle at 0% 0%, rgba(187, 247, 208, 0.6), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(240, 253, 244, 0.8), transparent 55%),
+        radial-gradient(circle at 0% 0%, rgba(187, 247, 208, 0.4), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(240, 253, 244, 0.6), transparent 55%),
         #f9fafb;
     color: #111827;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
 }
 
 ::-webkit-scrollbar {
@@ -47,6 +53,20 @@ input, select, button {
     }
 }
 
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.payment-method-btn.active {
+    background-color: #f0fdf4;
+    border-color: #16a34a;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
 .hero-panel {
     border: 1px solid rgba(148, 163, 184, 0.3);
     box-shadow:
@@ -62,6 +82,19 @@ input, select, button {
         0 28px 80px rgba(15, 23, 42, 0.45),
         0 0 0 1px rgba(255, 255, 255, 0.6);
     border-color: rgba(22, 163, 74, 0.4);
+}
+
+.suggestion-item {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.suggestion-item:hover {
+    background-color: #f0fdf4;
+}
+
+.station-search-container {
+    position: relative;
 }
 .news-card {
     border-radius: 1.6rem;
