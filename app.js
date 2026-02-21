@@ -20,22 +20,8 @@ const newsData = [
         image: "/Image.jpg",
         summary: "Świętujemy rocznicę wprowadzenia nowoczesnego taboru na trasę do Grajewa...",
         content: `
-            <p>To już 20 lat nowoczesnych autobusów szynowych SA133 we flocie Kolei Podlaskich!</p>
-            <p>"Gdy w 2006 roku na podlaskie tory wyjechały pierwsze autobusy szynowe serii SA133, dla wielu pasażerów był to symbol prawdziwego przełomu. Niskopodłogowe szynobusy z biletomatami, klimatyzacją oraz innymi udogodnieniami - Koleje Podlaskie wkroczyły w nową epokę" - Stefan Tur, prezes Kolei Podlaskich. </p>
-        `
-    },
-    {
-        id: 2,
-        title: "Wykolejenie pociągu EN57AL-1536 w Sokółce",
-        date: "2 sty 2026",
-        tag: "PILNE",
-        tagColor: "bg-red-800",
-        image: "https://ocdn.eu/images/pulscms/Y2U7MDA_/9673754f-4d0c-4f22-a270-ff0ef0d4155e.jpeg",
-        summary: "Dziś w godzinach porannych na stacji Sokółka doszło do groźnego incydentu. Pociąg Kolei Podlaskich o numerze EN57AL-1536, wykonujący przejazd techniczny do miejscowego zaplecza (szopy), wypadł z szyn.",
-        content: `
-            <p>Dziś w godzinach porannych na stacji Sokółka doszło do groźnego incydentu. Pociąg Kolei Podlaskich o numerze EN57AL-1536, wykonujący przejazd techniczny do miejscowego zaplecza (szopy), wypadł z szyn.</p>
-            <p>Na szczęście w momencie zdarzenia w pociągu znajdowała się jedynie obsługa, a nikt nie odniósł obrażeń. Uszkodzeniu uległ fragment torowiska oraz podwozie jednostki. Służby techniczne pracują nad postawieniem składu na tory przy użyciu specjalistycznego dźwigu kolejowego.</p>
-            <p>Ruch pociągów w kierunku Suwałk i Kuźnicy Białostockiej może odbywać się z opóźnieniami ze względu na zajęcie części torów stacyjnych przez uszkodzony skład. Prosimy o śledzenie komunikatów na peronach.</p>
+            <p>Świętujemy rocznicę wprowadzenia nowoczesnego taboru na trasę do Grajewa. Mija dokładnie 18 lat od momentu, gdy pierwszy szynobus serii SA133 wyjechał na tory województwa podlaskiego.</p>
+            <p>Pociągi te, zakupione przez Samorząd Województwa Podlaskiego w 2006 roku, stały się symbolem odrodzenia kolei regionalnej, oferując pasażerom klimatyzację i komfort nieosiągalny w starych składach.</p>
         `
     },
     {
