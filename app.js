@@ -1,6 +1,13 @@
 
 import { createIcons, Search, MapPin, ArrowRight, Menu, X, Clock, Smartphone, ChevronRight, Phone, Mail, Facebook, Instagram, XCircle, Check, TrainFront, Calendar, Info, ArrowLeft, CreditCard, RefreshCw, ShieldCheck, Wifi, Lock, CheckCircle, Award } from 'lucide';
 
+// DOM Elements
+const newsContainer = document.getElementById('news-container');
+const newsModal = document.getElementById('news-modal');
+const closeNewsModal = document.getElementById('close-news-modal');
+const closeNewsModalBtn = document.getElementById('close-news-modal-btn');
+const showAllNewsBtn = document.getElementById('show-all-news');
+const searchForm = document.getElementById('search-form');
 
 const ICON_CONFIG = {
     icons: {
@@ -151,12 +158,6 @@ const newsData = [
 
 ];
 
-const newsContainer = document.getElementById('news-container');
-const newsModal = document.getElementById('news-modal');
-const closeNewsModal = document.getElementById('close-news-modal');
-const closeNewsModalBtn = document.getElementById('close-news-modal-btn');
-const showAllNewsBtn = document.getElementById('show-all-news');
-
 const TAILWIND_COLOR_MAP = {
     'bg-red-800': '#991b1b',
     'bg-green-600': '#16a34a',
@@ -178,16 +179,16 @@ function renderNews(showAll = false) {
     itemsToDisplay.forEach(item => {
         const card = document.createElement('div');
 
-        card.className = `group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer news-card`;
+        card.className = `bg-white rounded-3xl overflow-hidden shadow-sm news-card`;
         
         card.innerHTML = `
             <div class="h-48 bg-gray-200 overflow-hidden relative">
-                <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover">
                 <span class="absolute top-4 left-4 ${item.tagColor} text-white text-xs font-bold px-3 py-1 rounded-full">${item.tag}</span>
             </div>
             <div class="p-6">
                 <span class="text-gray-400 text-sm">${item.date}</span>
-                <h4 class="text-xl font-bold mt-2 mb-3 leading-tight transition-colors duration-300">${item.title}</h4>
+                <h4 class="text-xl font-bold mt-2 mb-3 leading-tight">${item.title}</h4>
                 <p class="text-gray-600 text-sm line-clamp-2">${item.summary}</p>
             </div>
         `;
@@ -233,8 +234,6 @@ if (showAllNewsBtn) {
         renderNews(true);
     });
 }
-
-renderNews(false);
 
 const STATIONS_P2 = [
     { name: "Białystok", km: 0 },
@@ -368,8 +367,6 @@ function setupSearch(inputId, suggestionsId) {
 
 setupSearch('from-station-input', 'from-suggestions');
 setupSearch('to-station-input', 'to-suggestions');
-
-const searchForm = document.getElementById('search-form');
 
 const LINE_SPEED_KMPH = 50;
 
@@ -600,6 +597,9 @@ window.addEventListener('DOMContentLoaded', () => {
     if (dateInput) {
         dateInput.value = now.toLocaleDateString('en-CA');
     }
+    
+    // Initial news render
+    renderNews(false);
 });
 
 window.addEventListener('scroll', () => {
