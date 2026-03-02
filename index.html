@@ -1,8 +1,9 @@
- <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="pl-PL">
+ <link rel="icon" type="image/png" href="/favicon-32x32.png"/>
 <head>
     <meta charset="UTF-8">
-    </html> <link rel="icon" type="image/png" href="/favicon-32x32.png"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Koleje Podlaskie | Zaplanuj podróż z pociągami KP</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -16,21 +17,23 @@
     </script>
 </head>
 <body class="min-h-screen flex flex-col">
+<!-- If you add a header I will fucking kill you you dumb fuckass bitch -->
+
     <section class="relative min-h-[500px] flex items-center py-12">
-        <img src="/EN57AL-1529.jpg" class="absolute inset-0 w-full h-full object-cover">
+        <img src="/EN57AL-1529.jpg" alt="Pociąg Kolei Podlaskich EN57AL-1529" class="absolute inset-0 w-full h-full object-cover">
         <div class="absolute inset-0 bg-black/40"></div>
         
         <div class="container mx-auto px-4 relative z-10">
             <div class="max-w-2xl bg-white/95 p-8  shadow-2xl hero-panel mx-auto md:mx-0">
                 <h2 class="text-3xl font-bold mb-6 flex items-center gap-3 text-gray-800">
                     <i data-lucide="search" class="text-green-600 w-8 h-8"></i>
-                    <span data-i18n=>Wyszukiwarka połączeń</span>
+                    <span data-i18n=>Dokąd jedziemy?</span>
                 </h2>
                 <form id="search-form">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                         <div class="relative station-search-container">
                             <div class="relative">
-                                <input type="text" id="from-station-input" required autocomplete="off" placeholder="Stacja początkowa" data-i18n-placeholder="placeholder_station" class="w-full p-3 pr-10 border rounded-xl focus:ring-2 focus:ring-green-500 outline-none bg-white appearance-none">
+                                <input type="text" id="from-station-input" required autocomplete="off" placeholder="Wpisz stację..." data-i18n-placeholder="placeholder_station" class="w-full p-3 pr-10 border rounded-xl focus:ring-2 focus:ring-green-500 outline-none bg-white appearance-none">
                                 <i data-lucide="map-pin" class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none"></i>
                             </div>
                             <div id="from-suggestions" class="absolute z-50 left-0 right-0 mt-1 bg-white border rounded-xl shadow-xl max-h-60 overflow-y-auto hidden"></div>
@@ -46,7 +49,7 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                         <div class="relative">
                             <label class="text-xs font-semibold text-gray-500 uppercase ml-2" data-i18n="label_when">Kiedy</label>
-                            <input type="date" id="travel-date" required class="w-full p-3 border outline-none">
+                            <input type="date" id="travel-date" required class="w-full p-3 border rounded-xl focus:ring-2 focus:ring-green-500 outline-none">
                         </div>
                         <div class="relative">
                             <label class="text-xs font-semibold text-gray-500 uppercase ml-2" data-i18n="label_time">Godzina</label>
@@ -60,18 +63,20 @@
                         </div>
                     </div>
                     <button type="submit" class="w-full bg-green-600 text-white py-4 rounded-xl font-semibold text-lg shadow-lg flex justify-center items-center gap-2 cursor-default">
-                        <span data-i18n="btn_search">Szukaj</span>
+                        <span data-i18n="btn_search">Szukaj połączenia</span>
                         <i data-lucide="arrow-right" class="w-5 h-5"></i>
                     </button>
                 </form>
             </div>
         </div>
     </section>
+
+    <!-- Modernizacja Banner -->
     <div class="bg-amber-50 border-y border-amber-200 py-3 relative z-[50]">
         <div class="container mx-auto px-4 flex items-center gap-3 text-amber-800">
             <i data-lucide="info" class="w-5 h-5 shrink-0"></i>
             <p class="text-xs sm:text-sm font-semibold leading-relaxed" data-i18n="banner_text">
-                Uwaga! Modernizacja systemu zakupu biletów on-line. Prosimy o zakup biletów w aplikacji Koleje Podlaskie, u kierownika pociągu oraz w kasach biletowych lub w biletomatach. Przepraszamy za utrudnienia.
+                Modernizacja systemu zakupu biletów on-line. Prosimy o zakup biletów w aplikacji Koleje Podlaskie, u kierownika pociągu oraz w kasach biletowych lub w biletomatach. Przepraszamy za utrudnienia.
             </p>
         </div>
     </div>
@@ -80,9 +85,10 @@
         <div class="flex justify-between items-end mb-8">
             <div>
                 <h3 class="text-3xl font-bold text-gray-800" data-i18n="news_title">Aktualności</h3>
+                <p class="text-gray-500" data-i18n="news_subtitle">Bądź na bieżąco z życiem regionu</p>
             </div>
             <a href="#" id="show-all-news" class="text-green-600 font-semibold flex items-center gap-1 cursor-default">
-                <span data-i18n="news_all">Więcej aktualności</span> <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                <span data-i18n="news_all">Wszystkie wpisy</span> <i data-lucide="chevron-right" class="w-4 h-4"></i>
             </a>
         </div>
         
@@ -118,7 +124,7 @@
             <div class="flex-1 text-center md:text-left">
                 <h2 class="text-4xl font-bold mb-6" data-i18n="app_title">Pobierz aplikację<br>Koleje Podlaskie</h2>
                 <p class="text-green-100 text-lg mb-8 max-w-lg mx-auto md:mx-0" data-i18n="app_desc">
-                    Pobierz bezpłatną aplikację Kolei Podlaskich na system Android lub iOS i wygodnie kupuj bilety Kolei Podlaskich oraz POLREGIO - wygodnie i szybko!
+                    Kupuj bilety w 30 sekund, sprawdzaj opóźnienia w czasie rzeczywistym i korzystaj ze specjalnych rabatów tylko dla użytkowników aplikacji.
                 </p>
                 <div class="flex flex-wrap justify-center md:justify-start gap-4">
                     <a href="https://apps.apple.com/pl/app/polregio-bilety-pkp-online/id1444838528" target="_blank" rel="noopener noreferrer" class="block cursor-default">
@@ -157,45 +163,40 @@
                     </p>
                 </div>
                 <div>
-                    <h5 class="font-semibold mb-4" data-i18n="footer_pax">Dla pasażera</h5>
+                    <h5 class="font-semibold mb-4" data-i18n="footer_pax">Pasażer</h5>
                     <ul class="text-gray-500 text-sm space-y-2">
-                        <li><a href="#" class="text-gray-500 hover:text-gray-400 transition-colors" data-i18n="alerty">Alerty</a></li>
-                        <li><a href="#" class="text-gray-500 hover:text-gray-400 transition-colors" data-i18n="bilety">Bilety</a></li>
-                        <li><a href="#" class="text-gray-500 hover:text-gray-400 transition-colors" data-i18n="rozklad">Rozkład jazdy</a></li>
-                        <li><a href="#" class="text-gray-500 hover:text-gray-400 transition-colors" data-i18n="skargi">Skargi i reklamacje</a></li>
-                        <li><a href="#" class="text-gray-500 hover:text-gray-400 transition-colors" data-i18n="taryfy">Taryfy</a></li>
-                        <li><a href="#" class="text-gray-500 hover:text-gray-400 transition-colors" data-i18n="regulamin">Regulamin oraz przepisy</a></li>
-                        <li><a href="#" class="text-gray-500 hover:text-gray-400 transition-colors" data-i18n="honorowanie">Honorowanie biletów/a></li>
-                        <li><a href="#" class="text-gray-500 hover:text-gray-400 transition-colors" data-i18n="utrudnienia">Utrudnienia</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-green-600 transition-colors" data-i18n="link_timetable">Rozkład jazdy</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-green-600 transition-colors" data-i18n="link_prices">Cennik biletów</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-green-600 transition-colors" data-i18n="link_regulations">Regulamin</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-green-600 transition-colors" data-i18n="link_complaints">Reklamacje</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h5 class="font-semibold mb-4" data-i18n="footer_company">O Spółce</h5>
+                    <h5 class="font-semibold mb-4" data-i18n="footer_company">O firmie</h5>
                     <ul class="text-gray-500 text-sm space-y-2">
-                        <li><a href="#" class="text-gray-500 hover:text-gray-400 transition-colors" data-i18n="o-nas">O nas</a></li>
-                        <li><a href="#" class="text-gray-500 hover:text-green-600 transition-colors" data-i18n="reklama">Reklama w KP</a></li>
-                        <li><a href="#" class="text-gray-500 hover:text-green-600 transition-colors" data-i18n="zarzad">Zarząd</a></li>
-                        <li><a href="#" class="text-gray-500 hover:text-green-600 transition-colors" data-i18n="prywatnosc">Polityka prywatności</a></li>
-                        <li><a href="#" class="text-gray-500 hover:text-green-600 transition-colors" data-i18n="praca">Praca w KP</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-green-600 transition-colors" data-i18n="link_about">O nas</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-green-600 transition-colors" data-i18n="link_jobs">Praca</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-green-600 transition-colors" data-i18n="link_tenders">Przetargi</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-green-600 transition-colors" data-i18n="link_media">Kontakt dla mediów</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h5 class="font-semibold mb-4" data-i18n="kontakt">Kontakt</h5>
+                    <h5 class="font-semibold mb-4" data-i18n="footer_contact">Kontakt</h5>
                     <ul class="text-gray-500 text-sm space-y-2">
-                        <li class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4"></i> +48 85 347 912 68</li>
-                        <li class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4"></i> kontakt@kolejepodlaskie.eu</li>
+                        <li class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4"></i> 85 347 912 68</li>
+                        <li class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4"></i> kontakt@podlaskie.eu</li>
                         <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4"></i> ul. Kopernika 60, 15-397 Białystok</li>
                     </ul>
                 </div>
             </div>
             <div class="border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-gray-700 text-sm">© Koleje Podlaskie s.p. z o.o. 2026.</p>
+                <p class="text-gray-700 text-sm">COPYRIGHTS BY KOLEJE PODLASKIE 2026. ALL RIGHTS RESERVED.</p>
                 <div class="flex flex-col md:flex-row items-center gap-6">
                     <img src="/FEdP-2021-2027.png" class="h-10 w-auto pointer-events-none select-none opacity-80">
                     <div class="flex gap-4">
                         <a href="https://www.facebook.com/POLREGIO/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-600 transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
                         <a href="https://www.instagram.com/POLREGIO/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-pink-600 transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-                        <a href="https://www.x.com/POLREGIO_PL" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-black transition-colors">
+                        <a href="https://www.x.com/POLREGIO_PL" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-black transition-colors" title="X (Twitter)">
                             <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
                                 <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153zM17.61 20.644h2.039L6.486 3.24H4.298L17.61 20.644z"></path>
                             </svg>
@@ -208,3 +209,4 @@
 
     <script type="module" src="app.js"></script>
 </body>
+</html>
