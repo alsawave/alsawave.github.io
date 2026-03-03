@@ -1,5 +1,3 @@
-<script src="https://unpkg.com/lucide@latest"></script>
-<script src="app.js"></script>
 const newsContainer = document.getElementById('news-container');
 const newsModal = document.getElementById('news-modal');
 const closeNewsModal = document.getElementById('close-news-modal');
