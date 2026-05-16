@@ -1,4 +1,3 @@
-import { createIcons, Search, MapPin, ArrowRight, Menu, X, Clock, Smartphone, ChevronRight, Phone, Mail, Facebook, Instagram, XCircle, Check, TrainFront, Calendar, Info, ArrowLeft, CreditCard, RefreshCw, ShieldCheck, Wifi, Lock, CheckCircle, Award } from "https://unpkg.com/lucide@latest/dist/esm/lucide.es.js";
 const newsContainer = document.getElementById("news-container");
 const newsModal = document.getElementById("news-modal");
 const closeNewsModal = document.getElementById("close-news-modal");
