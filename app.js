@@ -5,8 +5,6 @@ const closeNewsModal = document.getElementById("close-news-modal");
 const closeNewsModalBtn = document.getElementById("close-news-modal-btn");
 const showAllNewsBtn = document.getElementById("show-all-news");
 const searchForm = document.getElementById("search-form");
-const ICON_CONFIG = { icons };
-createIcons(ICON_CONFIG);
 const newsData = [
      {
         id: 1,
