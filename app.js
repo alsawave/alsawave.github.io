@@ -237,65 +237,70 @@ if (showAllNewsBtn) {
 
 const STATIONS_P2 = [
     { name: "Białystok", km: 0 },
-    { name: "Białystok Zielone Wzgórza", km: 3.017 },
-    { name: "Białystok Starosielce", km: 4.555 },
-    { name: "Białystok Bacieczki", km: 8.013 },
-    { name: "Fasty", km: 12.636 },
-    { name: "Dobrzyniewo Duże", km: 15.147 },
-    { name: "Borsukówka", km: 21.286 },
-    { name: "Knyszyn", km: 28.437 },
-    { name: "Zastocze", km: 32.843 },
-    { name: "Czechowizna", km: 37.340 },
-    { name: "Mońki", km: 43.872 },
-    { name: "Goniądz", km: 52.317 },
-    { name: "Osowiec", km: 57.232 },
-    { name: "Podlasek", km: 70.379 },
-    { name: "Ruda", km: 74.054 },
-    { name: "Grajewo", km: 82.477 }
+    { name: "Białystok Zielone Wzgórza", km: 3 },
+    { name: "Białystok Starosielce", km: 5 },
+    { name: "Białystok Bacieczki", km: 8 },
+    { name: "Fasty", km: 13 },
+    { name: "Dobrzyniewo Duże", km: 15 },
+    { name: "Borsukówka", km: 21 },
+    { name: "Knyszyn", km: 28 },
+    { name: "Zastocze", km: 33 },
+    { name: "Czechowizna", km: 37 },
+    { name: "Mońki", km: 44 },
+    { name: "Goniądz", km: 52 },
+    { name: "Osowiec", km: 57 },
+    { name: "Podlasek", km: 70 },
+    { name: "Ruda", km: 74 },
+    { name: "Grajewo", km: 82 },
+    { name: "Prostki", km: 88 },
+    { name: "Lipińskie Małe", km: 93 },
+    { name: "Ełk Szyba Wschód", km: 100 },
+    { name: "Ełk", km: 103 }
 ];
 
 const STATIONS_P1 = [
-    { name: "Czyżew", km: 111.848 },
-    { name: "Kity", km: 118.107 },
-    { name: "Dąbrowa-Łazy", km: 120.732 },
-    { name: "Szepietowo", km: 127.376 },
-    { name: "Szymbory", km: 132.363 },
-    { name: "Jabłoń Kościelna", km: 135.825 },
-    { name: "Racibory", km: 140.474 },
-    { name: "Zdrody Nowe", km: 146.093 },
-    { name: "Łapy Osse", km: 150.450 },
-    { name: "Łapy", km: 154.035 },
-    { name: "Uhowo", km: 156.433 },
-    { name: "Bojary", km: 160.107 },
-    { name: "Baciuty", km: 163.251 },
-    { name: "Trypucie", km: 167.060 },
-    { name: "Niewodnica", km: 168.992 },
-    { name: "Klepacze", km: 172.150 },
-    { name: "Białystok Zielone Wzgórza", km: 174.288 },
-    { name: "Białystok", km: 177.305 }
+    { name: "Białystok", km: 0 },
+    { name: "Białystok Zielone Wzgórza", km: 3 },
+    { name: "Klepacze", km: 5},
+    { name: "Niewodnica", km: 8 },
+    { name: "Trypucie", km: 10 },
+    { name: "Baciuty", km: 14 },
+    { name: "Bojary", km: 17 },
+    { name: "Uhowo", km: 21 },
+    { name: "Łapy", km: 23 },
+    { name: "Łapy Osse", km: 27 },
+    { name: "Zdrody Nowe", km: 31 },
+    { name: "Racibory", km: 37 },
+    { name: "Jabłoń Kościelna", km: 42 },
+    { name: "Szymbory", km: 45 },
+    { name: "Szepietowo", km: 50 },
+    { name: "Dąbrowa-Łazy", km: 57 },
+    { name: "Kity", km: 59 },
+    { name: "Czyżew", km: 65 }
+    
 ];
 
 const STATIONS_P3 = [
     { name: "Białystok", km: 0 },
-    { name: "Białystok Zielone Wzgórza", km: 3.017 },
-    { name: "Białystok Nowe Miasto", km: 4.418 },
-    { name: "Białystok Stadion", km: 5.893 },
-    { name: "Hryniewicze", km: 8.825 },
-    { name: "Lewickie", km: 13.844 },
-    { name: "Hołówki Duże", km: 20.693 },
-    { name: "Zimnochy", km: 22.804 },
-    { name: "Strabla", km: 29.350 },
-    { name: "Rajsk", km: 36.174 },
-    { name: "Orzechowicze", km: 40.097 },
-    { name: "Bielsk Podlaski", km: 46.029 },
-    { name: "Lewki", km: 49.858 },
-    { name: "Podbiele", km: 54.375 },
-    { name: "Gregorowce", km: 58.494 },
-    { name: "Gregorowce Południowe", km: 60.160 },
-    { name: "Suchowolce", km: 64.063 },
-    { name: "Kleszczele", km: 70.563 },
-    { name: "Repczyce", km: 73.968 },
-    { name: "Czeremcha", km: 77.003 }
+    { name: "Białystok Zielone Wzgórza", km: 3 },
+    { name: "Białystok Nowe Miasto", km: 4 },
+    { name: "Białystok Stadion", km: 6 },
+    { name: "Hryniewicze", km: 9 },
+    { name: "Lewickie", km: 14 },
+    { name: "Hołówki Duże", km: 21 },
+    { name: "Zimnochy", km: 23 },
+    { name: "Strabla", km: 29 },
+    { name: "Rajsk", km: 36 },
+    { name: "Orzechowicze", km: 40 },
+    { name: "Bielsk Podlaski", km: 46 },
+    { name: "Lewki", km: 50 },
+    { name: "Podbiele", km: 54 },
+    { name: "Gregorowce", km: 58 },
+    { name: "Gregorowce Południowe", km: 60 },
+    { name: "Suchowolce", km: 64 },
+    { name: "Kleszczele", km: 70 },
+    { name: "Repczyce", km: 74 },
+    { name: "Czeremcha", km: 77 }
 ];
 let STATIONS_L38 = STATIONS_P2;
 let STATIONS_L6 = STATIONS_P1;
@@ -368,26 +373,20 @@ function setupSearch(inputId, suggestionsId) {
 setupSearch('from-station-input', 'from-suggestions');
 setupSearch('to-station-input', 'to-suggestions');
 
-const LINE_SPEED_KMPH = 50;
+const LINE_SPEED_KMPH = 100;
 
 const BASE_TIMETABLE = {
-    "Białystok->Grajewo": [
-        { id: "Os 20001", depTime: "01:00", type: "Nocny Sprinter", unit: "SA133-019" },
-        { id: "Os 20003", depTime: "04:30", type: "Nocny Sprinter", unit: "SA133-001" },
-        { id: "Os 20005", depTime: "08:00", type: "Osobowy", unit: "EN57AL-1529" },
-        { id: "Os 20007", depTime: "11:30", type: "Osobowy", unit: "SA133-009" },
-        { id: "Os 20009", depTime: "15:00", type: "Osobowy", unit: "EN57AL-1555" },
-        { id: "Os 20011", depTime: "18:30", type: "Osobowy", unit: "SA133-002" },
-        { id: "Os 20013", depTime: "22:00", type: "Osobowy", unit: "EN57AL-1544" }
+    "Białystok->Ełk": [
+        { id: "Os 15201", depTime: "05:34", type: "Osobowy", unit: "EN57AL-1529" },
+        { id: "Os 15203", depTime: "10:43", type: "Osobowy", unit: "EN57AL-1543" },
+        { id: "Os 15205", depTime: "14:35", type: "Osobowy", unit: "EN57AL-1555" },
+        { id: "Os 15207", depTime: "18:05", type: "Osobowy", unit: "EN57AL-1536" },
     ],
-    "Grajewo->Białystok": [
-        { id: "Os 20002", depTime: "02:45", type: "Nocny Sprinter", unit: "SA133-012" },
-        { id: "Os 20004", depTime: "06:15", type: "Osobowy", unit: "EN57AL-1543" },
-        { id: "Os 20006", depTime: "09:45", type: "Osobowy", unit: "SA133-001" },
-        { id: "Os 20008", depTime: "13:15", type: "Osobowy", unit: "EN57AL-1551" },
-        { id: "Os 20010", depTime: "16:45", type: "Osobowy", unit: "SA105-103" },
-        { id: "Os 20012", depTime: "20:15", type: "Osobowy", unit: "SA133-020" },
-        { id: "Os 20014", depTime: "23:45", type: "Osobowy", unit: "SA108-007" }
+    "Ełk->Białystok": [
+        { id: "Os 51202", depTime: "05:25", type: "Osobowy", unit: "EN57AL-1536" },
+        { id: "Os 51204", depTime: "07:39", type: "Osobowy", unit: "EN57AL-1529" },
+        { id: "Os 51206", depTime: "14:33", type: "Osobowy", unit: "EN57AL-1543" },
+        { id: "Os 51208", depTime: "17:28", type: "Osobowy", unit: "EN57AL-1555" }
     ],
     "Białystok->Czyżew": [
         { id: "Os 10011", depTime: "01:15", type: "Nocny Sprinter", unit: "SA133-001" },
@@ -421,7 +420,6 @@ const BASE_TIMETABLE = {
         { id: "Os 10036", depTime: "22:00", type: "Nocny Sprinter", unit: "SA133-012" },
         { id: "Os 10038", depTime: "23:30", type: "Nocny Sprinter", unit: "SA133-001" }
     ],
-    // REMINDER: NEVER ADD "Nocny Sprinter" to the Czeremcha - Białystok line.
     "Białystok->Czeremcha": [
         { id: "Os 30031", depTime: "06:52", type: "Osobowy", unit: "SA108-009" },
         { id: "Os 30033", depTime: "15:00", type: "Osobowy", unit: "SA105-103" }
@@ -456,17 +454,17 @@ function generateTrains(fromName, toName, selectedTimeMinutes = 0, targetDateStr
         if (STATIONS_P2.find(s => s.name === s1.name) && STATIONS_P2.find(s => s.name === s2.name)) {
             const p2s1 = STATIONS_P2.find(s => s.name === s1.name);
             const p2s2 = STATIONS_P2.find(s => s.name === s2.name);
-            return { key: p2s2.km > p2s1.km ? "Białystok->Grajewo" : "Grajewo->Białystok", speed: 50, originKm: p2s2.km > p2s1.km ? 0 : 82.477, s1: p2s1, s2: p2s2 };
+            return { key: p2s2.km > p2s1.km ? "Białystok->Grajewo" : "Grajewo->Białystok", speed: 100, originKm: p2s2.km > p2s1.km ? 0 : 82.477, s1: p2s1, s2: p2s2 };
         }
         if (STATIONS_P1.find(s => s.name === s1.name) && STATIONS_P1.find(s => s.name === s2.name)) {
             const p1s1 = STATIONS_P1.find(s => s.name === s1.name);
             const p1s2 = STATIONS_P1.find(s => s.name === s2.name);
-            return { key: p1s2.km < p1s1.km ? "Białystok->Czyżew" : "Czyżew->Białystok", speed: 50, originKm: p1s2.km < p1s1.km ? 177.305 : 111.848, s1: p1s1, s2: p1s2 };
+            return { key: p1s2.km < p1s1.km ? "Białystok->Czyżew" : "Czyżew->Białystok", speed: 100, originKm: p1s2.km < p1s1.km ? 177.305 : 111.848, s1: p1s1, s2: p1s2 };
         }
         if (STATIONS_P3.find(s => s.name === s1.name) && STATIONS_P3.find(s => s.name === s2.name)) {
             const p3s1 = STATIONS_P3.find(s => s.name === s1.name);
             const p3s2 = STATIONS_P3.find(s => s.name === s2.name);
-            return { key: p3s2.km > p3s1.km ? "Białystok->Czeremcha" : "Czeremcha->Białystok", speed: 40, originKm: p3s2.km > p3s1.km ? 0 : 77.003, s1: p3s1, s2: p3s2 };
+            return { key: p3s2.km > p3s1.km ? "Białystok->Czeremcha" : "Czeremcha->Białystok", speed: 100, originKm: p3s2.km > p3s1.km ? 0 : 77.003, s1: p3s1, s2: p3s2 };
         }
         return null;
     };
