@@ -5,15 +5,8 @@ const closeNewsModal = document.getElementById("close-news-modal");
 const closeNewsModalBtn = document.getElementById("close-news-modal-btn");
 const showAllNewsBtn = document.getElementById("show-all-news");
 const searchForm = document.getElementById("search-form");
-
-const ICON_CONFIG = {
-    icons: {
-        Search, MapPin, ArrowRight, Menu, X, Clock, Smartphone, ChevronRight, Phone, Mail, Facebook, Instagram, XCircle, Check, TrainFront, Calendar, Info, ArrowLeft, CreditCard, RefreshCw, ShieldCheck, Wifi, Lock, CheckCircle, Award
-    }
-};
-
+const ICON_CONFIG = { icons };
 createIcons(ICON_CONFIG);
-
 const newsData = [
      {
         id: 1,
