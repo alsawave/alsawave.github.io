@@ -1,3 +1,4 @@
+lucide.createIcons();
 const newsContainer = document.getElementById("news-container");
 const newsModal = document.getElementById("news-modal");
 const closeNewsModal = document.getElementById("close-news-modal");
