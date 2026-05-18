@@ -1,4 +1,5 @@
 lucide.createIcons();
+const searchForm = document.getElementById('searchForm');
 
 const TAILWIND_COLOR_MAP = {
     'bg-red-800': '#991b1b',
