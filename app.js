@@ -127,7 +127,7 @@ function setupSearch(inputId, suggestionsId) {
         `).join('');
         
         suggestions.classList.remove('hidden');
-        createIcons(ICON_CONFIG);
+        lucide.createIcons();
 
         suggestions.querySelectorAll('.suggestion-item').forEach(item => {
             item.addEventListener('click', () => {
@@ -372,10 +372,6 @@ window.addEventListener('DOMContentLoaded', () => {
     if (dateInput) {
         dateInput.value = now.toLocaleDateString('en-CA');
     }
-    
-    // Initial news render
-    renderNews(false);
-});
 
 window.addEventListener('scroll', () => {
     const header = document.querySelector('header');
