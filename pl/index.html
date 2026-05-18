@@ -85,8 +85,37 @@
             </a>
         </div>
         
-        <div id="news-container" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        </div>
+       <div id="news-container" class="grid grid-cols-1 md:grid-cols-3 gap-8"><div class="bg-white rounded-3xl overflow-hidden shadow-sm news-card">
+            <div class="h-48 bg-gray-200 overflow-hidden relative">
+                <img src="/Image.jpg" alt="20 lat szynobusów SA133 Kolei Podlaskich" class="w-full h-full object-cover">
+                <span class="absolute top-4 left-4 bg-blue-800 text-white text-xs font-bold px-3 py-1 rounded-full">WYDARZENIE</span>
+            </div>
+            <div class="p-6">
+                <span class="text-gray-400 text-sm">20 luty 2026</span>
+                <h4 class="text-xl font-bold mt-2 mb-3 leading-tight">20 lat szynobusów SA133 Kolei Podlaskich</h4>
+                <p class="text-gray-600 text-sm line-clamp-2">Świętujemy rocznicę wprowadzenia nowoczesnego taboru na trasę do Grajewa...</p>
+            </div>
+        </div><div class="bg-white rounded-3xl overflow-hidden shadow-sm news-card">
+            <div class="h-48 bg-gray-200 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1467810563316-b5476525c0f9?auto=format&amp;fit=crop&amp;q=80&amp;w=800" alt="Rekordowa liczba pasażerów na linii P2" class="w-full h-full object-cover">
+                <span class="absolute top-4 left-4 bg-blue-800 text-white text-xs font-bold px-3 py-1 rounded-full">WYDARZENIE</span>
+            </div>
+            <div class="p-6">
+                <span class="text-gray-400 text-sm">1 sty 2026</span>
+                <h4 class="text-xl font-bold mt-2 mb-3 leading-tight">Rekordowa liczba pasażerów na linii P2</h4>
+                <p class="text-gray-600 text-sm line-clamp-2">Rok 2025 zakończyliśmy z historycznym wynikiem przewozów na linii nr P2...</p>
+            </div>
+        </div><div class="bg-white rounded-3xl overflow-hidden shadow-sm news-card">
+            <div class="h-48 bg-gray-200 overflow-hidden relative">
+                <img src="https://imgs.search.brave.com/67G2vVJGy5Hh9L52SfBWi2k6A5JGthKsPuV-zExpUq8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kLWFy/dC5wcHN0YXRpYy5w/bC9rYWRyeS9rL3Iv/MS83Ni9lYS82NGVj/Nzc1MjY4MWZmX29f/bWVkaXVtLmpwZw" alt="Nowy rozkład jazdy: Więcej pociągów do i z Czyżewa" class="w-full h-full object-cover">
+                <span class="absolute top-4 left-4 bg-black text-white text-xs font-bold px-3 py-1 rounded-full">ROZKŁAD</span>
+            </div>
+            <div class="p-6">
+                <span class="text-gray-400 text-sm">15 gru 2025</span>
+                <h4 class="text-xl font-bold mt-2 mb-3 leading-tight">Nowy rozkład jazdy: Więcej pociągów do i z Czyżewa</h4>
+                <p class="text-gray-600 text-sm line-clamp-2">Od połowy grudnia na linii P1 Białystok - Czyżew wprowadzane będą dodatkowe składy pociągów...</p>
+            </div>
+        </div></div>
     </section>
 
     <div id="news-modal" class="fixed inset-0 bg-black/60 z-[90] hidden items-center justify-center p-4">
@@ -179,146 +208,5 @@
         </div>
     </footer>
 
-    <script>
-        window.newsData = [
-            {
-                id: 1,
-                title: "20 lat szynobusów SA133 Kolei Podlaskich",
-                date: "20 luty 2026",
-                tag: "WYDARZENIE",
-                tagColor: "bg-blue-800",
-                image: "/Image.jpg",
-                summary: "Świętujemy rocznicę wprowadzenia nowoczesnego taboru na trasę do Grajewa...",
-                content: `
-                    <p>Świętujemy rocznicę wprowadzenia nowoczesnego taboru na trasę do Grajewa. Mija dokładnie 18 lat od momentu, gdy pierwszy szynobus serii SA133 wyjechał na tory województwa podlaskiego.</p>
-                    <p>Pociągi te, zakupione przez Samorząd Województwa Podlaskiego w 2006 roku, stały się symbolem odrodzenia kolei regionalnej, oferując pasażerom klimatyzację i komfort nieosiągalny w starych składach.</p>
-                `
-            },
-            {
-                id: 3,
-                title: "Rekordowa liczba pasażerów na linii P2",
-                date: "1 sty 2026",
-                tag: "WYDARZENIE",
-                tagColor: "bg-blue-800",
-                image: "https://images.unsplash.com/photo-1467810563316-b5476525c0f9?auto=format&fit=crop&q=80&w=800",
-                summary: "Rok 2025 zakończyliśmy z historycznym wynikiem przewozów na linii nr P2...",
-                content: `
-                    <p>Rok 2025 zakończyliśmy z historycznym wynikiem przewozów na linii nr P2. Zarząd Kolei Podlaskich informuje, że trasa Białystok - Grajewo cieszy się niesłabnącym zainteresowaniem, a liczba pasażerów wzrosła o 20% w skali roku.</p>
-                `
-            },
-            {
-                id: 4,
-                title: "Nowy rozkład jazdy: Więcej pociągów do i z Czyżewa",
-                date: "15 gru 2025",
-                tag: "ROZKŁAD",
-                tagColor: "bg-black",
-                image: "https://imgs.search.brave.com/67G2vVJGy5Hh9L52SfBWi2k6A5JGthKsPuV-zExpUq8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kLWFy/dC5wcHN0YXRpYy5w/bC9rYWRyeS9rL3Iv/MS83Ni9lYS82NGVj/Nzc1MjY4MWZmX29f/bWVkaXVtLmpwZw",
-                summary: "Od połowy grudnia na linii P1 Białystok - Czyżew wprowadzane będą dodatkowe składy pociągów...",
-                content: `
-                    <p>Od połowy grudnia na linii P1 Białystok – Czyżew wprowadzane będą dodatkowe składy pociągów "Nocny Sprinter".</p>
-                    <p>Projekt realizowany jest przy wsparciu Funduszu Europejskiego w ramach inicjatywy „Prace na linii kolejowej E75 na odcinku Czyżew – Białystok”.</p>
-                `
-            },
-            {
-                id: 5,
-                title: "Otwarcie zaplecza w Sokółce",
-                date: "12.09.2025",
-                tag: "INFRASTRUKTURA",
-                tagColor: "bg-gray-700",
-                image:"/Zaplecze.jpg",
-                summary: "Zarząd Kolei Podlaskich z radością ogłasza otwarcie nowego zaplecza w Sokółce...",
-                content: `
-                    <p>Zarząd Kolei Podlaskich z radością ogłasza otwarcie nowego zaplecza w Sokółce. Na zapleczu będą operowane prace serwisowe szynobusów SA133 oraz elektrycznych zespołów trakcyjnych EN57AL.</p>
-                `
-            },
-            {
-                id: 6,
-                title: 'Uruchomienie pociągów "Nocny Sprinter"',
-                date: "20 lip 2025",
-                tag: "WYDARZENIE",
-                tagColor: "bg-blue-800",
-                image: "https://ilostan.forumkolejowe.pl/foto/37144.jpg",
-                summary: 'W bogatej ofercie pociągów Kolei Podlaskich warto zwrócić uwagę na nocne pociągi pospieszne oznaczone jako "KP Nocny Sprinter". Dlaczego są one wyjątkowe? To proste: jeżdżą nocą, dzięki czemu w ciągu dnia możesz robić wszystko inne, a jednocześnie dojeżdżasz tam, gdzie trzeba, nawet gdy inni jeszcze śpią.',
-                content: `
-                    <p>W bogatej ofercie pociągów Kolei Podlaskich warto zwrócić uwagę na nocne pociągi pospieszne oznaczone jako "KP Nocny Sprinter". Dlaczego są one wyjątkowe? To proste: jeżdżą nocą, dzięki czemu w ciągu dnia możesz robić wszystko inne, a jednocześnie dojeżdżasz tam, gdzie trzeba, nawet gdy inni jeszcze śpią.</p>
-                    
-                    <p>Nowoczesne elektryczne oraz spalinowe zespoły trakcyjne używane na trasach KP "Nocny Sprinter" posiadają:</p>
-        <p> - klimatyzację,</p>
-        <p> - ładowarki sieciowe z portami USB (tylko w składach EN57AL),</p>
-        <p> - internet bezprzewodowy WiFi.</p>
-                `
-            },
-            {
-                id: 7,
-                title: "Dzień dziecka z KP",
-                date: "22 maj 2025",
-                tag: "WYDARZENIE",
-                tagColor: "bg-blue-800",
-                image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=800",
-                summary: "Zwiększyliśmy komfort przewozu rowerów dla turystów jadących do Biebrzy...",
-                content: `
-                    <p>Najmłodsi z miłośników kolei 1 czerwca będzie mogła liczyć nie tylko na bezpłatne przewozy pociągami Kolei Podlaskich, lecz także na wiele atrakcji; spotkania z kolejarzami, upominki, zwiedzanie taboru - to tylko kilka z atrakcji zaplanowanych przez nas.</p>
-                    <p>Świętowanie z nami dnia dziecka to nie tylko przejazdy! W wielu miejscowościach przewoźnik zaprasza na wydarzenia:</p>
-        <p> - Białystok, 29 maja 2025 - na dworcu PKP na dzieci będzie czekać jednostka EN57AL-1551 otwarta do zwiedzania.</p>
-        <p> - Czeremcha, 30 maja 2025 - najmłodsi wezmą udział w darmowym przejeździe jednostką SA133-009.</p>
-        <p> - Mońki, 1 czerwca 2025 - Koleje Podlaskie i Stowarzyszenie Sympatyków Kolejnictwa "Kolejowe Podlasie" oferują zwiedzanie jednostki SA108-007 oraz SA108-009.</p>
-        <p>To ne wszystko - w pociągach na dzieci czekają również wiatraczki, słodycze, balony, kredki, kolorowanki i inne pamiątki!</p>
-                `
-            },
-            {
-                id: 8,
-                title: "Zniżka na zwiedzanie Twierdzy Osowiec",
-                date: "22 wrz 2024",
-                tag: "OFERTA",
-                tagColor: "bg-yellow-600",
-                image: "/Twierdza Osowiec.webp",
-                summary: "Pasażerowie KP otrzymają rabat na bilety wstępu do historycznej twierdzy...",
-                content: `
-                    <p>Pasażerowie KP otrzymają rabat na bilety wstępu do historycznej twierdzy. Startuje program 'Kolej na Twierdzę', promujący turystykę kolejową w naszym regionie.</p>
-                    <p>Każdy, kto okaże ważny bilet Kolei Podlaskich do stacji Osowiec, otrzyma darmowe zwiedzanie Muzeum Twierdzy Osowiec. Promocja trwa do dnia 1 października 2024.</p>
-                `
-            },
-            {
-                id: 9,
-                title: "Otwarcie stacji Białystok Zielone Wzgórza",
-                date: "03.09.2023",
-                tag: "INFRASTRUKTURA",
-                tagColor: "bg-gray-700",
-                image: "/4995e7a4f98f8ec48681c9006e5e1c6f.webp",
-                summary: "Nowoczesna stacja Białystok Zielone Wzgórza została dziś oficjalnie otwarta...",
-                content: `
-                    <p>Nowoczesna stacja Białystok Zielone Wzgórza została dziś oficjalnie otwarta. Koleje Podlaskie będą oferowały z przystanku ruch na liniach P1 Białystok-Czyżew oraz P2 Białystok-Grajewo.</p>
-                    <p>Stacja znajduje się przy osiedlu Zielone Wzgórza i będzie również obsługiwana przez dalekobieżne pociągi Intercity.</p>
-                `
-            },
-            {
-                id: 10,
-                title: "Fotowoltaika w hali serwisowej w Szepietowie",
-                date: "12.08.2023",
-                tag: "EKOLOGIA",
-                tagColor: "bg-green-500",
-                image: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80&w=800",
-                summary: "Główna hala serwisowa w Szepietowie od dziś będzie zasilana energią fotowoltaiczną...",
-                content: `
-                    <p>Główna hala serwisowa w Szepietowie od dziś będzie zasilana energią fotowoltaiczną.</p>
-                    <p>Dzięki tej inwestycji, naprawy naszego taboru odbywają się przy użyciu czystej energii.</p>
-                `
-            },
-            {
-                id: 11,
-                title: "Koniec pociągów do Małkinii",
-                date: "15.12.2022",
-                tag: "PILNE",
-                tagColor: "bg-red-800",
-                image: "https://imgs.search.brave.com/bGA8KX3IUdDXK5Cxe7N0DvT_ETfwEywLgG7KY3xXQMM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9rb2xl/am93eXBvcnRhbC5w/bC9maWxlcy9rbV80/NVdFLTAwNl9tbmsu/anBn",
-                summary: "W związku z zakończeniem obowiązywania umowy z Kolejami Mazowieckimi, od dnia 1 stycznia 2023 r. pociągi obsługujące linię P1 kończą bieg na stacji Czyżew.",
-                content: `
-                    <p>W związku z zakończeniem obowiązywania umowy z Kolejami Mazowieckimi, od dnia 1 stycznia 2023 r. pociągi obsługujące linię P1 kończą bieg na stacji Czyżew.</p>
-                    
-        <p>Jednocześnie Koleje Podlaskie informują o zakończeniu eksploatacji elektrycznych zespołów trakcyjnych typu 45WE NEWAG Impuls, użytkowanych dotychczas na podstawie umowy użyczenia zawartej z Kolejami Mazowieckimi.</p>
-                `
-            },
-        ];
-    </script>
 </body>
 </html>
