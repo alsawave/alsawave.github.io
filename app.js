@@ -1,18 +1,6 @@
 lucide.createIcons();
 const searchForm = document.getElementById('searchForm');
 
-const TAILWIND_COLOR_MAP = {
-    'bg-red-800': '#991b1b',
-    'bg-green-600': '#16a34a',
-    'bg-green-500': '#22c55e',
-    'bg-gray-900': '#111827',
-    'bg-gray-700': '#374151',
-    'bg-pink-600': '#db2777',
-    'bg-indigo-600': '#4f46e5',
-    'bg-yellow-600': '#ca8a04',
-    'bg-blue-500': '#3b82f6'
-};
-
 const STATIONS_P2 = [
     { name: "Białystok", km: 0 },
     { name: "Białystok Zielone Wzgórza", km: 3 },
@@ -80,8 +68,6 @@ const STATIONS_P3 = [
     { name: "Repczyce", km: 74 },
     { name: "Czeremcha", km: 77 }
 ];
-let STATIONS_L38 = STATIONS_P2;
-let STATIONS_L6 = STATIONS_P1;
 const STATION_LINES_MAP = {};
 [
     { list: STATIONS_P1, tag: "P1" },
@@ -150,8 +136,6 @@ function setupSearch(inputId, suggestionsId) {
 
 setupSearch('from-station-input', 'from-suggestions');
 setupSearch('to-station-input', 'to-suggestions');
-
-const LINE_SPEED_KMPH = 100;
 
 const BASE_TIMETABLE = {
     "Białystok->Ełk": [
