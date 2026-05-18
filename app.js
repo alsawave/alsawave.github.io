@@ -1,6 +1,4 @@
 lucide.createIcons();
-const searchForm = document.getElementById('searchForm');
-
 const STATIONS_P2 = [
     { name: "Białystok", km: 0 },
     { name: "Białystok Zielone Wzgórza", km: 3 },
@@ -318,19 +316,6 @@ function generateTrains(fromName, toName, selectedTimeMinutes = 0, targetDateStr
         return Array.from(uniqueLeg1.values()).sort((a, b) => timeToMinutes(a.depTime) - timeToMinutes(b.depTime));
     }
 }
-
-
-
-function formatDatePolish(date) {
-    const months = ["sty", "lut", "mar", "kwi", "maj", "cze", "lip", "sie", "wrz", "paź", "lis", "gru"];
-    return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
-}
-
-searchForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-});
-
-
 
 window.addEventListener('DOMContentLoaded', () => {
     const hourSelect = document.getElementById('travel-hour');
