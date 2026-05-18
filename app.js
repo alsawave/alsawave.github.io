@@ -373,7 +373,7 @@ window.addEventListener('DOMContentLoaded', () => {
     if (dateInput) {
         dateInput.value = now.toLocaleDateString('en-CA');
     }
-
+});
 window.addEventListener('scroll', () => {
     const header = document.querySelector('header');
     if (!header) return;
