@@ -1,4 +1,26 @@
 lucide.createIcons();
+const STATIONS_P1 = [
+    { name: "Białystok", km: 0 },
+    { name: "Białystok Zielone Wzgórza", km: 3 },
+    { name: "Klepacze", km: 5},
+    { name: "Niewodnica", km: 8 },
+    { name: "Trypucie", km: 10 },
+    { name: "Baciuty", km: 14 },
+    { name: "Bojary", km: 17 },
+    { name: "Uhowo", km: 21 },
+    { name: "Łapy", km: 23 },
+    { name: "Łapy Osse", km: 27 },
+    { name: "Zdrody Nowe", km: 31 },
+    { name: "Racibory", km: 37 },
+    { name: "Jabłoń Kościelna", km: 42 },
+    { name: "Szymbory", km: 45 },
+    { name: "Szepietowo", km: 50 },
+    { name: "Dąbrowa-Łazy", km: 57 },
+    { name: "Kity", km: 59 },
+    { name: "Czyżew", km: 65 }
+    
+];
+
 const STATIONS_P2 = [
     { name: "Białystok", km: 0 },
     { name: "Białystok Zielone Wzgórza", km: 3 },
@@ -20,28 +42,6 @@ const STATIONS_P2 = [
     { name: "Lipińskie Małe", km: 93 },
     { name: "Ełk Szyba Wschód", km: 100 },
     { name: "Ełk", km: 103 }
-];
-
-const STATIONS_P1 = [
-    { name: "Białystok", km: 0 },
-    { name: "Białystok Zielone Wzgórza", km: 3 },
-    { name: "Klepacze", km: 5},
-    { name: "Niewodnica", km: 8 },
-    { name: "Trypucie", km: 10 },
-    { name: "Baciuty", km: 14 },
-    { name: "Bojary", km: 17 },
-    { name: "Uhowo", km: 21 },
-    { name: "Łapy", km: 23 },
-    { name: "Łapy Osse", km: 27 },
-    { name: "Zdrody Nowe", km: 31 },
-    { name: "Racibory", km: 37 },
-    { name: "Jabłoń Kościelna", km: 42 },
-    { name: "Szymbory", km: 45 },
-    { name: "Szepietowo", km: 50 },
-    { name: "Dąbrowa-Łazy", km: 57 },
-    { name: "Kity", km: 59 },
-    { name: "Czyżew", km: 65 }
-    
 ];
 
 const STATIONS_P3 = [
@@ -66,11 +66,39 @@ const STATIONS_P3 = [
     { name: "Repczyce", km: 74 },
     { name: "Czeremcha", km: 77 }
 ];
+
+const STATIONS_P30 = [
+    { name: "Białystok", km: 0 },
+    { name: "Białystok Zielone Wzgórza", km: 3 },
+    { name: "Białystok Nowe Miasto", km: 4 },
+    { name: "Białystok Stadion", km: 6 },
+    { name: "Hryniewicze", km: 9 },
+    { name: "Lewickie", km: 14 },
+    { name: "Hołówki Duże", km: 21 },
+    { name: "Zimnochy", km: 23 },
+    { name: "Strabla", km: 29 },
+    { name: "Rajsk", km: 36 },
+    { name: "Orzechowicze", km: 40 },
+    { name: "Bielsk Podlaski", km: 46 },
+    { name: "Lewki", km: 50 },
+    { name: "Mikłasze", km: 57 },
+    { name: "Orlanka", km: 59 },
+    { name: "Morze", km: 64 },
+    { name: "Stare Berezowo", km: 66 },
+    { name: "Chytra", km: 71 },
+    { name: "Hajnówka", km: 75 },
+    { name: "Orzeszkowo", km: 83 },
+    { name: "Witowo", km: 89 },
+    { name: "Policzna", km: 96 },
+    { name: "Dobrowoda", km: 100 },
+    { name: "Czeremcha", km: 106 }
+];
 const STATION_LINES_MAP = {};
 [
     { list: STATIONS_P1, tag: "P1" },
     { list: STATIONS_P2, tag: "P2" },
-    { list: STATIONS_P3, tag: "P3" }
+    { list: STATIONS_P3, tag: "P3" },
+    { list: STATIONS_P30, tag: "P3" }
 ].forEach(config => {
     config.list.forEach(station => {
         if (!STATION_LINES_MAP[station.name]) {
