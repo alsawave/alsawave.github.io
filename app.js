@@ -91,7 +91,12 @@ const STATIONS_P30 = [
     { name: "Witowo", km: 89 },
     { name: "Policzna", km: 96 },
     { name: "Dobrowoda", km: 100 },
-    { name: "Czeremcha", km: 106 }
+    { name: "Czeremcha", km: 106 },
+    { name: "Borowiki", km: 117 },
+    { name: "Nowy Nurzec", km: 120 },
+    { name: "Nurzec", km: 127 },
+    { name: "Sycze", km: 134 },
+    { name: "Siemiatycze", km: 140 }
 ];
 const STATION_LINES_MAP = {};
 [
