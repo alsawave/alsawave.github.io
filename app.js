@@ -98,7 +98,7 @@ const STATION_LINES_MAP = {};
     { list: STATIONS_P1, tag: "P1" },
     { list: STATIONS_P2, tag: "P2" },
     { list: STATIONS_P3, tag: "P3" },
-    { list: STATIONS_P30, tag: "P3" }
+    { list: STATIONS_P30, tag: "P30" }
 ].forEach(config => {
     config.list.forEach(station => {
         if (!STATION_LINES_MAP[station.name]) {
