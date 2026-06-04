@@ -44,7 +44,7 @@ const STATIONS_P2 = [
     { name: "Ełk", km: 103 }
 ];
 
-const STATIONS_P3 = [
+const STATIONS_P30 = [
     { name: "Białystok", km: 0 },
     { name: "Białystok Zielone Wzgórza", km: 3 },
     { name: "Białystok Nowe Miasto", km: 4 },
@@ -67,7 +67,7 @@ const STATIONS_P3 = [
     { name: "Czeremcha", km: 77 }
 ];
 
-const STATIONS_P30 = [
+const STATIONS_P3 = [
     { name: "Białystok", km: 0 },
     { name: "Białystok Zielone Wzgórza", km: 3 },
     { name: "Białystok Nowe Miasto", km: 4 },
@@ -96,7 +96,18 @@ const STATIONS_P30 = [
     { name: "Nowy Nurzec", km: 120 },
     { name: "Nurzec", km: 127 },
     { name: "Sycze", km: 134 },
-    { name: "Siemiatycze", km: 140 }
+    { name: "Siemiatycze", km: 140 },
+    { name: "Fronołów", km: 143 },
+    { name: "Sarnaki", km: 148 },
+    { name: "Platerów", km: 153 },
+    { name: "Patków", km: 160 },
+    { name: "Niemojki", km: 163 },
+    { name: "Cierpigórz", km: 171 },
+    { name: "Mordy Miasto", km: 177 },
+    { name: "Mordy", km: 179 },
+    { name: "Krzymosze", km: 182 },
+    { name: "Stok Lacki", km: 186 },
+    { name: "Siedlce", km: 195 }
 ];
 const STATION_LINES_MAP = {};
 [
