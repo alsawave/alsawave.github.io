@@ -224,13 +224,13 @@ const BASE_TIMETABLE = {
         { id: "Os 10036", depTime: "22:00", type: "Nocny Sprinter", unit: "SA133-012" },
         { id: "Os 10038", depTime: "23:30", type: "Nocny Sprinter", unit: "SA133-001" }
     ],
-    "Białystok->Czeremcha": [
-        { id: "Os 30031", depTime: "06:52", type: "Osobowy", unit: "SA108-009" },
-        { id: "Os 30033", depTime: "15:00", type: "Osobowy", unit: "SA105-103" }
+    "Białystok->Siedlce": [
+        { id: 'Os 10480/1 "Leśna"', depTime: "09:08", type: "Osobowy", unit: "SA108-007" },
+        { id: 'Os 10482/3 "Orlanka"', depTime: "14:30", type: "Osobowy", unit: "SA133-001" }
     ],
-    "Czeremcha->Białystok": [
-        { id: "Os 30032", depTime: "04:54", type: "Osobowy", unit: "SA108-009" },
-        { id: "Os 30034", depTime: "18:00", type: "Osobowy", unit: "SA105-103" },
+    "Siedlce->Białystok": [
+        { id: 'Os 10493 "Leśna"', depTime: "14:06", type: "Osobowy", unit: "SA108-007" },
+        { id: 'Os 10489/8 "Orlanka"', depTime: "18:23", type: "Osobowy", unit: "SA133-001" },
     ]
 };
 
