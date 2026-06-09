@@ -44,29 +44,6 @@ const STATIONS_P2 = [
     { name: "Ełk", km: 103 }
 ];
 
-const STATIONS_P30 = [
-    { name: "Białystok", km: 0 },
-    { name: "Białystok Zielone Wzgórza", km: 3 },
-    { name: "Białystok Nowe Miasto", km: 4 },
-    { name: "Białystok Stadion", km: 6 },
-    { name: "Hryniewicze", km: 9 },
-    { name: "Lewickie", km: 14 },
-    { name: "Hołówki Duże", km: 21 },
-    { name: "Zimnochy", km: 23 },
-    { name: "Strabla", km: 29 },
-    { name: "Rajsk", km: 36 },
-    { name: "Orzechowicze", km: 40 },
-    { name: "Bielsk Podlaski", km: 46 },
-    { name: "Lewki", km: 50 },
-    { name: "Podbiele", km: 54 },
-    { name: "Gregorowce", km: 58 },
-    { name: "Gregorowce Południowe", km: 60 },
-    { name: "Suchowolce", km: 64 },
-    { name: "Kleszczele", km: 70 },
-    { name: "Repczyce", km: 74 },
-    { name: "Czeremcha", km: 77 }
-];
-
 const STATIONS_P3 = [
     { name: "Białystok", km: 0 },
     { name: "Białystok Zielone Wzgórza", km: 3 },
@@ -108,6 +85,29 @@ const STATIONS_P3 = [
     { name: "Krzymosze", km: 182 },
     { name: "Stok Lacki", km: 186 },
     { name: "Siedlce", km: 195 }
+];
+
+const STATIONS_P30 = [
+    { name: "Białystok", km: 0 },
+    { name: "Białystok Zielone Wzgórza", km: 3 },
+    { name: "Białystok Nowe Miasto", km: 4 },
+    { name: "Białystok Stadion", km: 6 },
+    { name: "Hryniewicze", km: 9 },
+    { name: "Lewickie", km: 14 },
+    { name: "Hołówki Duże", km: 21 },
+    { name: "Zimnochy", km: 23 },
+    { name: "Strabla", km: 29 },
+    { name: "Rajsk", km: 36 },
+    { name: "Orzechowicze", km: 40 },
+    { name: "Bielsk Podlaski", km: 46 },
+    { name: "Lewki", km: 50 },
+    { name: "Podbiele", km: 54 },
+    { name: "Gregorowce", km: 58 },
+    { name: "Gregorowce Południowe", km: 60 },
+    { name: "Suchowolce", km: 64 },
+    { name: "Kleszczele", km: 70 },
+    { name: "Repczyce", km: 74 },
+    { name: "Czeremcha", km: 77 }
 ];
 const STATION_LINES_MAP = {};
 [
@@ -181,20 +181,20 @@ setupSearch('to-station-input', 'to-suggestions');
 
 const BASE_TIMETABLE = {
     "Białystok->Ełk": [
-        { id: "Os 15201", depTime: "05:34", type: "Osobowy", unit: "EN57AL-1529" },
-        { id: "Os 15203", depTime: "10:43", type: "Osobowy", unit: "EN57AL-1543" },
-        { id: "Os 15205", depTime: "14:35", type: "Osobowy", unit: "EN57AL-1555" },
-        { id: "Os 15207", depTime: "18:05", type: "Osobowy", unit: "EN57AL-1536" },
+        { id: "Os 15801", depTime: "05:34", type: "Osobowy", unit: "EN57AL-1529" },
+        { id: "Os 15803", depTime: "10:43", type: "Osobowy", unit: "EN57AL-1543" },
+        { id: "Os 15805", depTime: "14:35", type: "Osobowy", unit: "EN57AL-1555" },
+        { id: "Os 15807", depTime: "18:05", type: "Osobowy", unit: "EN57AL-1544" },
     ],
     "Ełk->Białystok": [
-        { id: "Os 51202", depTime: "05:25", type: "Osobowy", unit: "EN57AL-1536" },
-        { id: "Os 51204", depTime: "07:39", type: "Osobowy", unit: "EN57AL-1529" },
-        { id: "Os 51206", depTime: "14:33", type: "Osobowy", unit: "EN57AL-1543" },
-        { id: "Os 51208", depTime: "17:28", type: "Osobowy", unit: "EN57AL-1555" }
+        { id: "Os 51800", depTime: "05:25", type: "Osobowy", unit: "EN57AL-1544" },
+        { id: "Os 51802", depTime: "07:39", type: "Osobowy", unit: "EN57AL-1529" },
+        { id: "Os 51804", depTime: "14:33", type: "Osobowy", unit: "EN57AL-1543" },
+        { id: "Os 51806", depTime: "17:28", type: "Osobowy", unit: "EN57AL-1555" }
     ],
     "Białystok->Czyżew": [
-        { id: "Os 10011", depTime: "01:15", type: "Nocny Sprinter", unit: "SA133-001" },
-        { id: "Os 10013", depTime: "04:45", type: "Nocny Sprinter", unit: "SA133-019" },
+        { id: "Os 10323", depTime: "04:16", type: "Osobowy", unit: "EN57AL-1551" },
+        { id: "Os 11201", depTime: "04:59", type: "Osobowy", unit: "SA133-019" },
         { id: "Os 10015", depTime: "06:15", type: "Osobowy", unit: "EN57AL-1529" },
         { id: "Os 10017", depTime: "07:45", type: "Osobowy", unit: "SA108-009" },
         { id: "Os 10019", depTime: "09:15", type: "Osobowy", unit: "EN57AL-1543" },
@@ -225,12 +225,14 @@ const BASE_TIMETABLE = {
         { id: "Os 10038", depTime: "23:30", type: "Nocny Sprinter", unit: "SA133-001" }
     ],
     "Białystok->Siedlce": [
+        { id: 'Os 10490 "Nurzec"', depTime: "05:14", type: "Osobowy", unit: "SA133-001" },
         { id: 'Os 10480/1 "Leśna"', depTime: "09:08", type: "Osobowy", unit: "SA108-007" },
-        { id: 'Os 10482/3 "Orlanka"', depTime: "14:30", type: "Osobowy", unit: "SA133-001" }
+        { id: 'Os 10482/3 "Orlanka"', depTime: "14:30", type: "Osobowy", unit: "SA133-019" }
     ],
     "Siedlce->Białystok": [
+        { id: 'Os 10485/4 "Nurzec"', depTime: "07:34", type: "Osobowy", unit: "SA133-001" },
         { id: 'Os 10493 "Leśna"', depTime: "14:06", type: "Osobowy", unit: "SA108-007" },
-        { id: 'Os 10489/8 "Orlanka"', depTime: "18:23", type: "Osobowy", unit: "SA133-001" },
+        { id: 'Os 10489/8 "Orlanka"', depTime: "18:23", type: "Osobowy", unit: "SA133-019" },
     ]
 };
 
@@ -258,7 +260,7 @@ function generateTrains(fromName, toName, selectedTimeMinutes = 0, targetDateStr
         if (STATIONS_P2.find(s => s.name === s1.name) && STATIONS_P2.find(s => s.name === s2.name)) {
             const p2s1 = STATIONS_P2.find(s => s.name === s1.name);
             const p2s2 = STATIONS_P2.find(s => s.name === s2.name);
-            return { key: p2s2.km > p2s1.km ? "Białystok->Grajewo" : "Grajewo->Białystok", speed: 100, originKm: p2s2.km > p2s1.km ? 0 : 82.477, s1: p2s1, s2: p2s2 };
+            return { key: p2s2.km > p2s1.km ? "Białystok->Ełk" : "Ełk->Białystok", speed: 100, originKm: p2s2.km > p2s1.km ? 0 : 82.477, s1: p2s1, s2: p2s2 };
         }
         if (STATIONS_P1.find(s => s.name === s1.name) && STATIONS_P1.find(s => s.name === s2.name)) {
             const p1s1 = STATIONS_P1.find(s => s.name === s1.name);
