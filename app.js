@@ -36,7 +36,7 @@ const P10 = [
     { name: "Koziki", km: 94 },
     { name: "Konarzyce", km: 99 },
     { name: "Łomża", km: 102 }
-]
+];
 
 const P2 = [
     { name: "Białystok", km: 0 },
