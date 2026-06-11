@@ -164,8 +164,8 @@ function wyszukiwarka(inputId, suggestionsId) {
         });
     };
 
-    input.addEventListener('input', (e) => sugestie(e.target.value));
-    input.addEventListener('focus', () => sugestie(input.value));
+    input.addEventListener('input', (e) => sugestie1(e.target.value));
+    input.addEventListener('focus', () => sugestie1(input.value));
     
     document.addEventListener('click', (e) => {
         if (!input.contains(e.target) && !suggestions.contains(e.target)) {
