@@ -175,7 +175,7 @@ function wyszukiwarka(inputId, suggestionsId) {
             suggestions.classList.add('hidden');
         }
     });
-}
+
 document.addEventListener('DOMContentLoaded', () => {
   wyszukiwarka('from-station-input', 'from-suggestions');
   wyszukiwarka('to-station-input', 'to-suggestions');
