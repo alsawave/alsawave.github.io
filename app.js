@@ -162,8 +162,15 @@ function wyszukiwarka(inputId, suggestionsId) {
             });
         });
     };
+        function debounce(fn, wait = 80) {
+        let timer;
+        return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => fn(...args), wait);
+      };
+    }
 
-    input.addEventListener('input', (e) => sugestie(e.target.value));
+    input.addEventListener('input', debounce(e => sugestie(e.target.value), 80));
     input.addEventListener('focus', () => sugestie(input.value));
     
     document.addEventListener('click', (e) => {
