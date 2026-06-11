@@ -142,7 +142,7 @@ function wyszukiwarka(inputId, suggestionsId) {
             return;
         }
 
-        suggestions.innerHTML = filtered.map(station => `
+        suggestions.innerHTML = sugestie.map(station => `
             <div class="suggestion-item p-3 border-b last:border-0 flex items-center gap-3" data-value="${station.name}">
                 <div class="p-1.5 bg-gray-50 rounded-lg text-gray-400">
                     <i data-lucide="map-pin" class="w-4 h-4"></i>
