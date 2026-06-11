@@ -19,6 +19,24 @@ const P1 = [
     { name: "Kity", km: 59 },
     { name: "Czyżew", km: 65 }
 ];
+const P10 = [
+    { name: "Białystok", km: 0 },
+    { name: "Białystok Zielone Wzgórza", km: 3 },
+    { name: "Klepacze", km: 5},
+    { name: "Niewodnica", km: 8 },
+    { name: "Trypucie", km: 10 },
+    { name: "Baciuty", km: 14 },
+    { name: "Bojary", km: 17 },
+    { name: "Uhowo", km: 21 },
+    { name: "Łapy", km: 23 },
+    { name: "Sokoły", km: 35 },
+    { name: "Kulesze Kościelne", km: 49 },
+    { name: "Śniadowo - Stara Stacja", km: 84 },
+    { name: "Śniadowo", km: 86 },
+    { name: "Koziki", km: 94 },
+    { name: "Konarzyce", km: 99 },
+    { name: "Łomża", km: 102 }
+]
 
 const P2 = [
     { name: "Białystok", km: 0 },
@@ -131,27 +149,6 @@ const stacje = Object.keys(linie).sort((a, b) => a.localeCompare(b, 'pl')).map(n
 function wyszukiwarka(inputId, suggestionsId) {
     const input = document.getElementById(inputId);
     const suggestions = document.getElementById(suggestionsId);
-
-    const sugestie = (filter = "") => {
-        const sugestie1 = stacje.filter(s => 
-            s.name.toLowerCase().startsWith(filter.toLowerCase())
-        );
-        if (sugestie1.length === 0 || filter === "") {
-            suggestions.classList.add('hidden');
-            return;
-        }
-        if (sugestie1.length === 0) {
-        suggestions.classList.add('hidden');
-        const prev = input.value;
-        input.value = "Nie ma takiej stacji!";
-        setTimeout(() => {
-        input.value = prev;
-        input.focus();
-        input.setSelectionRange(prev.length, prev.length);
-        }, 1200);
-        return;
-        }
-
         suggestions.innerHTML = sugestie1.map(station => `
             <div class="suggestion-item p-3 border-b last:border-0 flex items-center gap-3" data-value="${station.name}">
                 <div class="p-1.5 bg-gray-50 rounded-lg text-gray-400">
@@ -163,9 +160,7 @@ function wyszukiwarka(inputId, suggestionsId) {
                 </div>
             </div>
         `).join('');
-        
         suggestions.classList.remove('hidden');
-
         suggestions.querySelectorAll('.suggestion-item').forEach(item => {
             item.addEventListener('click', () => {
                 input.value = item.dataset.value;
@@ -173,17 +168,8 @@ function wyszukiwarka(inputId, suggestionsId) {
             });
         });
     };
-        function debounce(fn, wait = 80) {
-        let timer;
-        return (...args) => {
-        clearTimeout(timer);
-        timer = setTimeout(() => fn(...args), wait);
-      };
-    }
-
-    input.addEventListener('input', debounce(e => sugestie(e.target.value), 80));
+    input.addEventListener('input', (e) => sugestie(e.target.value));
     input.addEventListener('focus', () => sugestie(input.value));
-    
     document.addEventListener('click', (e) => {
         if (!input.contains(e.target) && !suggestions.contains(e.target)) {
             suggestions.classList.add('hidden');
