@@ -150,6 +150,25 @@ const stacje = Object.keys(linie).sort((a, b) => a.localeCompare(b, 'pl')).map(n
 function wyszukiwarka(inputId, suggestionsId) {
     const input = document.getElementById(inputId);
     const suggestions = document.getElementById(suggestionsId);
+    const sugestie = (filter = "") => {
+        const sugestie1 = stacje.filter(s => 
+            s.name.toLowerCase().startsWith(filter.toLowerCase())
+        );
+        if (sugestie1.length === 0 || filter === "") {
+            suggestions.classList.add('hidden');
+            return;
+        }
+        if (sugestie1.length === 0) {
+        suggestions.classList.add('hidden');
+        const prev = input.value;
+        input.value = "Nie ma takiej stacji!";
+        setTimeout(() => {
+        input.value = prev;
+        input.focus();
+        input.setSelectionRange(prev.length, prev.length);
+        }, 1200);
+        return;
+        }
         suggestions.innerHTML = sugestie1.map(station => `
             <div class="suggestion-item p-3 border-b last:border-0 flex items-center gap-3" data-value="${station.name}">
                 <div class="p-1.5 bg-gray-50 rounded-lg text-gray-400">
