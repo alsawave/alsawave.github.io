@@ -136,13 +136,12 @@ function wyszukiwarka(inputId, suggestionsId) {
         const sugestie1 = stacje.filter(s => 
             s.name.toLowerCase().includes(filter.toLowerCase())
         );
-        
         if (sugestie1.length === 0 || filter === "") {
             suggestions.classList.add('hidden');
             return;
         }
 
-        suggestions.innerHTML = sugestie.map(station => `
+        suggestions.innerHTML = sugestie1.map(station => `
             <div class="suggestion-item p-3 border-b last:border-0 flex items-center gap-3" data-value="${station.name}">
                 <div class="p-1.5 bg-gray-50 rounded-lg text-gray-400">
                     <i data-lucide="map-pin" class="w-4 h-4"></i>
@@ -164,8 +163,8 @@ function wyszukiwarka(inputId, suggestionsId) {
         });
     };
 
-    input.addEventListener('input', (e) => sugestie1(e.target.value));
-    input.addEventListener('focus', () => sugestie1(input.value));
+    input.addEventListener('input', (e) => sugestie(e.target.value));
+    input.addEventListener('focus', () => sugestie(input.value));
     
     document.addEventListener('click', (e) => {
         if (!input.contains(e.target) && !suggestions.contains(e.target)) {
