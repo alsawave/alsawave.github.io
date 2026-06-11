@@ -195,6 +195,7 @@ function wyszukiwarka(inputId, suggestionsId) {
         }
     });
 };
+};
 document.addEventListener('DOMContentLoaded', () => {
   wyszukiwarka('from-station-input', 'from-suggestions');
   wyszukiwarka('to-station-input', 'to-suggestions');
