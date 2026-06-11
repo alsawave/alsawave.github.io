@@ -173,5 +173,7 @@ function wyszukiwarka(inputId, suggestionsId) {
         }
     });
 }
-wyszukiwarka('from-station-input', 'from-suggestions')
-wyszukiwarka('to-station-input', 'to-suggestions');
+document.addEventListener('DOMContentLoaded', () => {
+  wyszukiwarka('from-station-input', 'from-suggestions');
+  wyszukiwarka('to-station-input', 'to-suggestions');
+});
