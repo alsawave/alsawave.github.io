@@ -164,8 +164,8 @@ function wyszukiwarka(inputId, suggestionsId) {
         });
     };
 
-    input.addEventListener('input', (e) => renderSuggestions(e.target.value));
-    input.addEventListener('focus', () => renderSuggestions(input.value));
+    input.addEventListener('input', (e) => wyszukiwarka(e.target.value));
+    input.addEventListener('focus', () => wyszukiwarka(input.value));
     
     document.addEventListener('click', (e) => {
         if (!input.contains(e.target) && !suggestions.contains(e.target)) {
