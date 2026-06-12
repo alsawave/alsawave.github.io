@@ -37,7 +37,6 @@ const P10 = [
     { name: "Konarzyce", km: 99 },
     { name: "Łomża", km: 102 }
 ];
-
 const P2 = [
     { name: "Białystok", km: 0 },
     { name: "Białystok Zielone Wzgórza", km: 3 },
@@ -151,21 +150,21 @@ function wyszukiwarka(inputId, suggestionsId) {
     const input = document.getElementById(inputId);
     const suggestions = document.getElementById(suggestionsId);
     const sugestie = (filter = "") => {
-        const sugestie1 = stacje.filter(s => 
-            s.name.toLowerCase().startsWith(filter.toLowerCase())
+        const sugestie1 = stacje.filter(szukaj => 
+            szukaj.name.toLowerCase().contains(filter.toLowerCase())
         );
         if (sugestie1.length === 0 || filter === "") {
             suggestions.classList.add('hidden');
             return;
         }
-        suggestions.innerHTML = sugestie1.map(station => `
-            <div class="suggestion-item p-3 border-b last:border-0 flex items-center gap-3" data-value="${station.name}">
+        suggestions.innerHTML = sugestie1.map(stacja => `
+            <div class="suggestion-item p-3 border-b last:border-0 flex items-center gap-3" data-value="${stacja.name}">
                 <div class="p-1.5 bg-gray-50 rounded-lg text-gray-400">
-                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                    <i data-lucide="train-front" class="w-4 h-4"></i>
                 </div>
                 <div>
-                    <div class="font-bold text-sm text-gray-800">${station.name}</div>
-                    <div class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">${station.lines.join(', ')}</div>
+                    <div class="font-bold text-sm text-gray-800">${stacja.name}</div>
+                    <div class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">${stacja.lines.join(', ')}</div>
                 </div>
             </div>
         `).join('');
