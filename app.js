@@ -19,24 +19,7 @@ const P1 = [
     { name: "Kity", km: 59 },
     { name: "Czyżew", km: 65 }
 ];
-const P10 = [
-    { name: "Białystok", km: 0 },
-    { name: "Białystok Zielone Wzgórza", km: 3 },
-    { name: "Klepacze", km: 5},
-    { name: "Niewodnica", km: 8 },
-    { name: "Trypucie", km: 10 },
-    { name: "Baciuty", km: 14 },
-    { name: "Bojary", km: 17 },
-    { name: "Uhowo", km: 21 },
-    { name: "Łapy", km: 23 },
-    { name: "Sokoły", km: 35 },
-    { name: "Kulesze Kościelne", km: 49 },
-    { name: "Śniadowo - Stara Stacja", km: 84 },
-    { name: "Śniadowo", km: 86 },
-    { name: "Koziki", km: 94 },
-    { name: "Konarzyce", km: 99 },
-    { name: "Łomża", km: 102 }
-];
+
 const P2 = [
     { name: "Białystok", km: 0 },
     { name: "Białystok Zielone Wzgórza", km: 3 },
@@ -124,7 +107,8 @@ const P30 = [
     { name: "Kleszczele", km: 70 },
     { name: "Repczyce", km: 74 },
     { name: "Czeremcha", km: 77 }
-];
+]
+
 const linie = {};
 [
     { list: P1, tag: "P1" },
