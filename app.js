@@ -107,7 +107,7 @@ const P30 = [
     { name: "Kleszczele", km: 70 },
     { name: "Repczyce", km: 74 },
     { name: "Czeremcha", km: 77 }
-]
+];
 
 const linie = {};
 [
