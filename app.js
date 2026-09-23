@@ -134,7 +134,7 @@ function wyszukiwarka(inputId, suggestionsId) {
     const suggestions = document.getElementById(suggestionsId);
     const sugestie = (filter = "") => {
         const sugestie1 = stacje.filter(szukaj => 
-            szukaj.name.toLowerCase().contains(filter.toLowerCase())
+            szukaj.name.toLowerCase().includes(filter.toLowerCase())
         );
         if (sugestie1.length === 0 || filter === "") {
             suggestions.classList.add('hidden');
