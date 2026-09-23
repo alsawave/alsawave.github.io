@@ -139,7 +139,8 @@ function wyszukiwarka(inputId, suggestionsId) {
         if (sugestie1.length === 0 || filter === "") {
             suggestions.classList.add('hidden');
             return;
-        }
+        };
+    };
         suggestions.innerHTML = sugestie1.map(stacja => `
             <div class="suggestion-item p-3 border-b last:border-0 flex items-center gap-3" data-value="${stacja.name}">
                 <div class="p-1.5 bg-gray-50 rounded-lg text-gray-400">
