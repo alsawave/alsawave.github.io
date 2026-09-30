@@ -140,7 +140,6 @@ function wyszukiwarka(inputId, suggestionsId) {
             suggestions.classList.add('hidden');
             return;
         };
-    };
         suggestions.innerHTML = sugestie1.map(stacja => `
             <div class="suggestion-item p-3 border-b last:border-0 flex items-center gap-3" data-value="${stacja.name}">
                 <div class="p-1.5 bg-gray-50 rounded-lg text-gray-400">
@@ -159,6 +158,7 @@ function wyszukiwarka(inputId, suggestionsId) {
                 suggestions.classList.add('hidden');
             });
         });
+    };
     input.addEventListener('input', (e) => sugestie(e.target.value));
     input.addEventListener('focus', () => sugestie(input.value));
     document.addEventListener('click', (e) => {
@@ -166,7 +166,6 @@ function wyszukiwarka(inputId, suggestionsId) {
             suggestions.classList.add('hidden');
         }
     });
-};
 };
 document.addEventListener('DOMContentLoaded', () => {
   wyszukiwarka('from-station-input', 'from-suggestions');
