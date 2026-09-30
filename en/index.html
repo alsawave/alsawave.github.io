@@ -14,7 +14,212 @@
             </head>
             <body class="min-h-screen flex flex-col">
             
-        
+        <div id="top-bar" class="top-bar headroom headroom--top headroom--not-bottom">
+    <div class="hpm-accessibility-bar hpm-js-accessibility-bar">
+        <div class="container">
+            <div class="row">
+                <div class="visible-md visible-lg top-bar_languages">
+                        <a href="/pl/" title="Zmień język serwisu na polski" class="hpm-top--language actual-lang">
+                            <img class="hpm-top--flag" src="/images/flags/pl.svg" alt="Ikona języka polski">
+                        </a>
+                </div>
+                <div class="col-sm-12 col-md-5 hpm-accessibility--info">
+                    <p class="hpm-top--plaintext">
+                        Infolinia: <b>22 474 00 44 </b><br>
+                    </p>
+                    <span><p style="margin-bottom: 0;"><span>Koszt wg taryfy operatora. Realizator usługi: Arteria C.S. <em>(7 dni w tygodniu w godz. 06:00 - 22:00)</em></span></p></span>
+                </div>
+                <div class="visible-md visible-lg top-bar_change-text">
+                    <button title="Zwiększ rozmiar czcionki" class="hpm-top--button js-font--up">A<sup class="top-bar_change-text_sup">+</sup></button>
+                    <button title="Zmniejsz rozmiar czcionki" class="hpm-top--button js-font--down">A<sup class="top-bar_change-text_sup">-</sup></button>
+                    <button title="Zmień kontrast na żółty tekst na czarnym tle" class="hpm-top--button js-font--contrast"><i class="fa fa-adjust top-bar_change-text_contrast"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div role="navigation">
+        <nav class="navbar navbar-default hpm-navbar">
+            <div class="container navbar-container top-bar_navbar">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header navbar-header--main">
+                    <a class="main-logo" href="/pl/" title="Link do strony głównej">
+                        <img class="navbar-brand_image" src="/images/main-menu-items/POLREGIO_logo-poziom.pdf.svg" alt="Logotyp POLREGIO">
+                    </a>
+
+                    <div class="top-bar_mobile">
+                            <div class="dropdown top-bar_button-image_div top-bar_button-image_first-element">
+                                <a href="#" title="Wyszukaj" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" onclick="setTimeout(function() { $('#menu-search').focus(); }, 10)">
+                                    <img class="top-bar_button-image" src="/images/main-menu-items/lupa.svg" alt="Wyszukaj">
+                                </a>
+                                <div class="dropdown-menu top-bar_search">
+                                    <form action="/pl/o-firmie/szukaj/" method="get">
+                                        <div class="input-group top-bar_search_input">
+                                            <input type="text" class="form-control" id="menu-search" name="q" placeholder="Wpisz szukaną frazę">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                                            </span>
+                                        </div><!-- /input-group -->
+                                    </form>
+                                </div>
+                            </div>
+                                                    <div class="top-bar_button-image_div">
+                                <a href="/pl/podroz-bez-barier/zglaszanie-asysty/">
+                                    <img class="top-bar_button-image" src="/images/main-menu-items/pomoc.svg" alt="Podróż bez barier">
+                                </a>
+                            </div>
+                                                    <div class="top-bar_button-image_div">
+                                <a href="/pl/kontakt/centrala/">
+                                    <img class="top-bar_button-image" src="/images/main-menu-items/telefon.svg" alt="Kontakt">
+                                </a>
+                            </div>
+
+                        <div class="top-bar_line"></div>
+                        
+                        <button type="button" class="mobile-menu-button" title="Wybierz enter, żeby rozwinać menu mobilne" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <img class="navbar-brand_list-icon navbar-brand_list-icon_menu" src="/images/main-menu-items/iconmonstr-line-three-horizontal-lined-black.svg" alt="Ikona menu">
+                        </button>
+                    </div>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse main-menu" id="bs-example-navbar-collapse-1" tabindex="-1">
+                    <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown menu-item-RozkladJazdyIMapaPolaczen">
+                                    <a href="javascript:void(0)" class="dropdown-toggle" title="Aktywny element: link do strony" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Rozkład jazdy i mapa połączeń</a>
+                                                                    <ul class="dropdown-menu hpm-js-subnav-list ">
+                                            <li>
+                                                            <a href="/pl/rozklad-jazdy-i-mapa-polaczen/rozklad-jazdy/" title="Aktywny element: link do strony">Rozkład jazdy <span class="arrow-link"></span></a>
+                                            </li>
+                                            <li>
+                                                            <a href="/pl/rozklad-jazdy-i-mapa-polaczen/odwolania-i-opoznienia-pociagow/" title="Aktywny element: link do strony">Dzisiejsze utrudnienia <span class="arrow-link"></span></a>
+                                            </li>
+                                            <li>
+                                                            <a href="/pl/rozklad-jazdy-i-mapa-polaczen/mapa-polaczen/" title="Aktywny element: link do strony">Mapa połączeń <span class="arrow-link"></span></a>
+                                            </li>
+                                            <li>
+                                                            <a href="/pl/rozklad-jazdy-i-mapa-polaczen/przystanki-na-zadanie/" title="Aktywny element: link do strony">Przystanki na żądanie <span class="arrow-link"></span></a>
+                                            </li>
+                                            <li>
+                                                            <a href="/pl/rozklad-jazdy-i-mapa-polaczen/travelmap-planer-podróży/" title="Aktywny element: link do strony">TravelMap - Planer podróży <span class="arrow-link"></span></a>
+                                            </li>
+                                    </ul>
+                            </li>
+                            <li class="dropdown menu-item-DlaPodroznych">
+                                    <a href="javascript:void(0)" class="dropdown-toggle" title="Aktywny element: link do strony" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dla podróżnych</a>
+                                                                    <ul class="dropdown-menu hpm-js-subnav-list subnav-list">
+                                            <li class="subnav-list-subnav">
+                                                            <div title="Kategoria linków: Gdzie kupić bilet?">Aktualności</div>
+                                                            <a href="/pl/dla-podroznych/informacje/" title="Aktywny element: link do strony">Sprawdź <span class="arrow-link"></span></a>
+                                            </li>
+                                            <li class="subnav-list-subnav">
+                                                    <div title="Kategoria linków: Gdzie kupić bilet?">Gdzie kupić bilet</div>
+                                                        <a href="/pl/dla-podroznych/gdzie-kupic-bilet/aplikacja-mobilna/" title="Aktywny element: link do strony">Bezpłatna aplikacja Polregio dla podróżnych <span class="arrow-link"></span></a>
+                                                        <a href="/pl/dla-podroznych/gdzie-kupic-bilet/internet/" title="Aktywny element: link do strony">Sprzedaż biletów przez Internet <span class="arrow-link"></span></a>
+                                                        <a href="/pl/dla-podroznych/gdzie-kupic-bilet/automaty-biletowe/" title="Aktywny element: link do strony">Automaty biletowe <span class="arrow-link"></span></a>
+                                                        <a href="/pl/dla-podroznych/gdzie-kupic-bilet/kasy-biletowe/" title="Aktywny element: link do strony">Kasy biletowe <span class="arrow-link"></span></a>
+                                                        <a href="/pl/dla-podroznych/gdzie-kupic-bilet/na-pokladzie/" title="Aktywny element: link do strony">Sprzedaż w pociągach <span class="arrow-link"></span></a>
+                                                        <a href="/pl/dla-podroznych/gdzie-kupic-bilet/punkty-sprzedazy-kolporter/" title="Aktywny element: link do strony">Punkty sprzedaży Kolporter <span class="arrow-link"></span></a>
+                                                        <a href="/pl/dla-podroznych/gdzie-kupic-bilet/grupowy-przewoz-osob/" title="Aktywny element: link do strony">Grupowy Przewóz Osób <span class="arrow-link"></span></a>
+                                                        <a href="/pl/dla-podroznych/gdzie-kupic-bilet/prawa-i-obowiazki-pasazerow/" title="Aktywny element: link do strony">Prawa i obowiązki pasażerów <span class="arrow-link"></span></a>
+                                            </li>
+                                            <li class="subnav-list-subnav">
+                                                    <div title="Kategoria linków: Gdzie kupić bilet?">Pomoc</div>
+                                                        <a href="/pl/dla-podroznych/pomoc/najczesciej-zadawane-pytania/" title="Aktywny element: link do strony">Najczęściej zadawane pytania <span class="arrow-link"></span></a>
+                                                        <a href="/pl/dla-podroznych/pomoc/ceny-biletow/" title="Aktywny element: link do strony">Ceny biletów <span class="arrow-link"></span></a>
+                                                        <a href="/pl/dla-podroznych/pomoc/przepisy-taryfy-ulgi/" title="Aktywny element: link do strony">Przepisy, taryfy, ulgi <span class="arrow-link"></span></a>
+                                                        <a href="/pl/dla-podroznych/pomoc/wzory-drukow-polregio/" title="Aktywny element: link do strony">Wzory druków POLREGIO <span class="arrow-link"></span></a>
+                                                        <a href="/pl/dla-podroznych/pomoc/numery-alarmowe/" title="Aktywny element: link do strony">Numery alarmowe <span class="arrow-link"></span></a>
+                                                        <a href="/pl/dla-podroznych/pomoc/bezpieczenstwo-w-podrozy/" title="Aktywny element: link do strony">Bezpieczeństwo w podróży <span class="arrow-link"></span></a>
+                                                        <a href="/pl/dla-podroznych/pomoc/honorowanie-biletow/" title="Aktywny element: link do strony">Honorowanie biletów <span class="arrow-link"></span></a>
+                                            </li>
+                                    </ul>
+                            </li>
+                            <li class="dropdown menu-item-OfertyIPromocje">
+                                    <a href="javascript:void(0)" class="dropdown-toggle" title="Aktywny element: link do strony" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Oferty i promocje</a>
+                                                                    <ul class="dropdown-menu hpm-js-subnav-list ">
+                                            <li>
+                                                            <a href="/pl/oferty-i-promocje/oferty-krajowe/" title="Aktywny element: link do strony">Oferty krajowe <span class="arrow-link"></span></a>
+                                            </li>
+                                            <li>
+                                                            <a href="/pl/oferty-i-promocje/oferty-regionalne/" title="Aktywny element: link do strony">Oferty regionalne <span class="arrow-link"></span></a>
+                                            </li>
+                                            <li>
+                                                            <a href="/pl/oferty-i-promocje/oferty-zintegrowane/" title="Aktywny element: link do strony">Oferty zintegrowane <span class="arrow-link"></span></a>
+                                            </li>
+                                            <li>
+                                                            <a href="/pl/oferty-i-promocje/oferty-miedzynarodowe/" title="Aktywny element: link do strony">Oferty międzynarodowe <span class="arrow-link"></span></a>
+                                            </li>
+                                    </ul>
+                            </li>
+                            <li class="dropdown menu-item-ObslugaKlienta">
+                                    <a href="javascript:void(0)" class="dropdown-toggle" title="Aktywny element: link do strony" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Obsługa klienta</a>
+                                                                    <ul class="dropdown-menu hpm-js-subnav-list ">
+                                            <li>
+                                                            <a href="/pl/obsluga-klienta/formularz-reklamacji-skarg-i-wnioskow/" title="Aktywny element: link do strony">eFormularz reklamacji, skarg i wniosków <span class="arrow-link"></span></a>
+                                            </li>
+                                            <li>
+                                                            <a href="/pl/obsluga-klienta/reklamacje-skargi-wnioski/" title="Aktywny element: link do strony">Reklamacje, skargi, wnioski <span class="arrow-link"></span></a>
+                                            </li>
+                                            <li>
+                                                            <a href="/pl/obsluga-klienta/biura-rzeczy-znalezionych/" title="Aktywny element: link do strony">Biura rzeczy znalezionych <span class="arrow-link"></span></a>
+                                            </li>
+                                            <li>
+                                                            <a href="/pl/obsluga-klienta/podroz-bez-barier/" title="Aktywny element: link do strony">Podróż bez barier <span class="arrow-link"></span></a>
+                                            </li>
+                                            <li>
+                                                            <a href="/pl/obsluga-klienta/polityka-cookies/" title="Aktywny element: link do strony">Polityka cookies <span class="arrow-link"></span></a>
+                                            </li>
+                                    </ul>
+                            </li>
+                            <li class="dropdown menu-item-Kariera">
+                                    <a href="/pl/kariera/" class="dropdown-toggle" title="Aktywny element: link do strony" role="button">Kariera</a>
+                                                            </li>
+                                                    <li class="dropdown visible-xs">
+                                <a href="#" title="Zmień język. Wybierz enter, żeby rozwinąć." class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Zmień język <span class="lang">(PL)</span></a>
+                                <ul class="dropdown-menu">
+                                        <li><a href="/pl/" title="Wybierając element możesz zmienić język strony na Polski">Polski <span class="arrow-link"></span></a></li>
+                                </ul>
+                            </li>
+
+                        <li title="Zwiększ rozmiar czcionki" class="visible-xs no-dropdown hpm-top--button js-font--up"><span>Zwiększ rozmiar czcionki</span><i class="fa fa-plus" aria-hidden="true"></i></li>
+                        <li title="Zmniejsz rozmiar czcionki" class="visible-xs no-dropdown hpm-top--button js-font--down"><span>Zmniejsz rozmiar czcionki</span><i class="fa fa-minus" aria-hidden="true"></i></li>
+                        <li class="visible-xs no-dropdown wcag-change-contrast hpm-js-wcag-change-contrast js-font--contrast" title="Wybierz enter, żeby zmienić kontrast strony"><span>Wersja o zwiększonym kontraście</span><i class="fa fa-adjust" aria-hidden="true"></i></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+                <div class="top-bar_desktop">
+                    <div class="top-bar_line"></div>
+
+                        <div class="dropdown top-bar_button-image_div">
+                            <a href="#" title="Wyszukaj" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" onclick="setTimeout(function() { $('#menu-search').focus(); }, 10)">
+                                <img class="top-bar_button-image" src="/images/main-menu-items/lupa.svg" alt="Wyszukaj">
+                            </a>
+                            <div class="dropdown-menu top-bar_search">
+                                <form action="/pl/o-firmie/szukaj/" method="get">
+                                    <div class="input-group top-bar_search_input">
+                                        <input type="text" class="form-control" id="menu-search" name="q" placeholder="Wpisz szukaną frazę">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                                        </span>
+                                    </div><!-- /input-group -->
+                                </form>
+                            </div>
+                        </div>
+                                            <div class="top-bar_button-image_div">
+                            <a href="/pl/podroz-bez-barier/zglaszanie-asysty/">
+                                <img class="top-bar_button-image" src="/images/main-menu-items/pomoc.svg" alt="Podróż bez barier">
+                            </a>
+                        </div>
+                                            <div class="top-bar_button-image_div">
+                            <a href="/pl/kontakt/centrala/">
+                                <img class="top-bar_button-image" src="/images/main-menu-items/telefon.svg" alt="Kontakt">
+                            </a>
+                        </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+</div>
 
 
 
