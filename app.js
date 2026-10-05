@@ -129,12 +129,19 @@ const stacje = Object.keys(linie).sort((a, b) => a.localeCompare(b, 'pl')).map(n
     lines: Array.from(linie[name]).sort()
 }));
 
+const normalizacja = text =>
+    text
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/ł/g, "l");
+
 function wyszukiwarka(inputId, suggestionsId) {
     const input = document.getElementById(inputId);
     const suggestions = document.getElementById(suggestionsId);
     const sugestie = (filter = "") => {
         const sugestie1 = stacje.filter(szukaj => 
-            szukaj.name.toLowerCase().includes(filter.toLowerCase())
+            normalizacja(szukaj.name).includes(normalizacja(filter))
         );
         if (sugestie1.length === 0 || filter === "") {
             suggestions.classList.add('hidden');
