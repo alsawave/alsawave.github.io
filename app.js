@@ -149,7 +149,8 @@ const normalizacja = text =>
         .toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "")
-        .replace(/ł/g, "l");
+        .replace(/ł/g, "l")
+        .replace(/ź/g, "z");
 
 function wyszukiwarka(inputId, suggestionsId) {
     const input = document.getElementById(inputId);
