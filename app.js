@@ -170,6 +170,8 @@ const P30 = [
 const linie = {};
 [
     { list: P1, tag: "P1" },
+    { list: P10, tag: "P10" },
+    { list: P11, tag: "P11" },
     { list: P2, tag: "P2" },
     { list: P3, tag: "P3" },
     { list: P30, tag: "P30" }
