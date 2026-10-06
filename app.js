@@ -76,6 +76,7 @@ const P11 = [
     { name: "Śniadowo" },
     { name: "Kurpie" },
     { name: "Ostrołęka" }
+];
         
 const P2 = [
     { name: "Białystok" },
