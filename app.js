@@ -201,10 +201,11 @@ function wyszukiwarka(inputId, suggestionsId) {
     const input = document.getElementById(inputId);
     const suggestions = document.getElementById(suggestionsId);
     const sugestie = (filter = "") => {
+        const wpis = normalizacja(filter.trim());
         const sugestie1 = stacje.filter(szukaj => 
-            normalizacja(szukaj.name).startsWith(normalizacja(filter))
-        );
-        if (sugestie1.length === 0 || filter === "") {
+            normalizacja(szukaj.name).startsWith(wpis))
+            .slice(0, 5);
+         if (sugestie1.length === 0 || wpis === "") {
             suggestions.classList.add('hidden');
             return;
         };
