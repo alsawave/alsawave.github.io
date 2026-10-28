@@ -202,7 +202,7 @@ function wyszukiwarka(inputId, suggestionsId) {
     const suggestions = document.getElementById(suggestionsId);
     const sugestie = (filter = "") => {
         const sugestie1 = stacje.filter(szukaj => 
-            normalizacja(szukaj.name).includes(normalizacja(filter))
+            normalizacja(szukaj.name).startsWith(normalizacja(filter))
         );
         if (sugestie1.length === 0 || filter === "") {
             suggestions.classList.add('hidden');
